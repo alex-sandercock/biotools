@@ -13,8 +13,8 @@ website:
     site: "@sandercock_alex"
 
   # Site metadata
-  site-url: https://alex-sandercock.github.io/bioinfo-tools-site
-  repo-url: https://github.com/alex-sandercock/bioinfo-tools-site
+  site-url: https://alex-sandercock.github.io/biotools
+  repo-url: https://github.com/alex-sandercock/biotools
   repo-actions: [issue]
   
   # Top navigation bar

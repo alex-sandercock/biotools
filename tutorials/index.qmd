@@ -52,4 +52,4 @@ install.packages(c("tidyverse", "vcfR", "toolone"))
 
 ## Feedback
 
-Found an error or have a suggestion? Please [open an issue](https://github.com/alex-sandercock/bioinfo-tools-site/issues) or email me.
+Found an error or have a suggestion? Please [open an issue](https://github.com/alex-sandercock/biotools/issues) or email me.

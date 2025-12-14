@@ -1,11 +1,11 @@
 # Bioinformatics Tools Website
 
-A Quarto-based website for hosting bioinformatics tools, tutorials, and workshop materials.
+A Quarto-based website for hosting bioinformatics tools, tutorials, and workshop materials. The site is published via GitHub Pages at https://alex-sandercock.github.io/biotools.
 
 ## Structure
 
 ```
-bioinfo-site/
+biotools/
 ├── _quarto.yml          # Main configuration
 ├── index.qmd            # Home page (about the work)
 ├── about.qmd            # About me page
@@ -36,8 +36,8 @@ bioinfo-site/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/yoursite.git
-cd yoursite
+git clone https://github.com/alex-sandercock/biotools.git
+cd biotools
 
 # Preview the site
 quarto preview

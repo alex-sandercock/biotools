@@ -8,7 +8,7 @@ A collection of useful tools, tutorials, and references. This is not exhaustive 
 
 ::: {.callout-tip}
 ## Suggest a resource
-Know of something that should be here? [Let me know](about.qmd#contact) or [open a PR](https://github.com/alex-sandercock/bioinfo-tools-site).
+Know of something that should be here? [Let me know](about.qmd#contact) or [open a PR](https://github.com/alex-sandercock/biotools).
 :::
 
 ## Learning Bioinformatics
