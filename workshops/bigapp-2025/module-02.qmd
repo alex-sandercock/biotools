@@ -1,0 +1,195 @@
+---
+title: "Module 2: Population Structure & PCA"
+subtitle: "Visualizing genetic relationships"
+---
+
+## What is Population Structure?
+
+**Population structure** means that individuals in your dataset are not randomly related — some are more similar to each other than to others.
+
+This happens because of:
+
+- **Geographic separation** — Plants from different regions evolved separately
+- **Breeding history** — Different breeding programs created different genetic groups
+- **Species/subspecies** — Mixing samples from related species
+
+### Why Does It Matter for Breeding?
+
+Population structure affects almost every genomic analysis:
+
+| Analysis | How structure affects it |
+|----------|-------------------------|
+| **GWAS** | Can cause false positives — structure looks like trait association |
+| **Genomic selection** | Models may not work across populations |
+| **Diversity estimates** | Mixing populations inflates diversity |
+
+::: {.callout-important}
+## Rule of thumb
+Always check population structure **before** running GWAS or genomic prediction.
+:::
+
+---
+
+## What is PCA?
+
+**PCA (Principal Component Analysis)** is a way to visualize high-dimensional data in 2D or 3D.
+
+### The Intuition
+
+Imagine you have 5,000 SNPs. Each sample can be thought of as a point in 5,000-dimensional space. We can't visualize that!
+
+PCA finds the **main axes of variation** and projects everything down to 2 or 3 dimensions while preserving as much of the structure as possible.
+
+![PCA concept diagram](../../images/pca-concept.png){fig-alt="Diagram showing how PCA reduces dimensions while preserving structure"}
+
+### Reading a PCA Plot
+
+Each dot is one sample. Samples close together are **genetically similar**.
+
+![Example PCA plot](../../images/pca-example.png){fig-alt="PCA plot showing two distinct clusters of samples"}
+
+In this example:
+- Two clear clusters → likely two genetic groups
+- Samples in between → possible hybrids or admixed individuals
+- Outliers → check for mislabeling or contamination
+
+---
+
+## Running PCA in BIGapp
+
+### Demo: PCA Analysis
+
+Watch how to run PCA:
+
+![Running PCA in BIGapp](../../images/bigapp-pca.gif){fig-alt="Animated GIF showing the PCA workflow in BIGapp"}
+
+**Steps:**
+
+1. Make sure you have filtered data loaded
+2. Go to **"PCA"** in the sidebar
+3. Click **Run PCA**
+4. Explore the interactive plot
+
+### Understanding the Output
+
+BIGapp gives you:
+
+1. **Interactive PCA plot** — Hover over points to see sample IDs
+2. **Variance explained** — How much information each PC captures
+3. **PC loadings** — Which SNPs contribute most to each PC
+
+### Try It Yourself
+
+1. Run PCA on your filtered data
+2. Look at the plot — do you see distinct clusters?
+3. Check the variance explained — how much does PC1 capture?
+
+---
+
+## Interpreting Your Results
+
+### Scenario 1: Clear Clusters
+
+![PCA with clear clusters](../../images/pca-clusters.png){fig-alt="PCA showing distinct population clusters"}
+
+**What it means:** Your data contains distinct genetic groups.
+
+**What to do:**
+- Consider whether to analyze groups separately
+- Account for structure in GWAS (BIGapp does this automatically)
+- For genomic selection, training within groups usually works better
+
+### Scenario 2: Continuous Variation
+
+![PCA with continuous variation](../../images/pca-continuous.png){fig-alt="PCA showing continuous spread without distinct clusters"}
+
+**What it means:** No strong substructure — samples vary along a gradient.
+
+**What to do:**
+- This is often ideal for genomic prediction
+- GWAS should still include PCs as covariates
+
+### Scenario 3: Outliers
+
+![PCA with outliers](../../images/pca-outliers.png){fig-alt="PCA showing main cluster with outlier samples"}
+
+**What it means:** Some samples are very different from the rest.
+
+**What to do:**
+- Check sample labels — are these mislabeled?
+- Check DNA quality — did something fail?
+- Are these a different species/variety?
+- Consider removing or analyzing separately
+
+---
+
+## Coloring by Groups
+
+If you have metadata (population, breeding program, location), you can color the PCA:
+
+![PCA colored by population](../../images/bigapp-pca-colored.gif){fig-alt="Animated GIF showing how to color PCA by metadata"}
+
+This helps you see if genetic structure matches your expectations.
+
+**Steps:**
+
+1. Upload a metadata file with group labels
+2. In the PCA section, select the grouping variable
+3. The plot updates with colors
+
+---
+
+## How Many PCs to Use?
+
+Look at the **scree plot** — it shows how much variance each PC explains.
+
+![Scree plot example](../../images/scree-plot.png){fig-alt="Scree plot showing variance explained by each PC"}
+
+**Rule of thumb:** Keep PCs until the curve levels off (the "elbow"). Often this is 3-10 PCs.
+
+For GWAS and genomic prediction, BIGapp uses PCs automatically to correct for structure.
+
+---
+
+## DAPC: An Alternative to PCA
+
+**DAPC (Discriminant Analysis of Principal Components)** is another method for visualizing structure. It's better at separating known groups.
+
+Use DAPC when:
+- You already know your group labels
+- You want to maximize separation between groups
+- You're interested in which markers differentiate groups
+
+BIGapp includes DAPC in the same section as PCA.
+
+---
+
+## Exercise
+
+Using your filtered data:
+
+1. Run PCA
+2. How many distinct clusters do you see?
+3. What percentage of variance does PC1 explain? PC2?
+4. Are there any outliers?
+
+If you have metadata:
+5. Color by group — does genetic structure match?
+
+---
+
+## Key Takeaways
+
+✅ Population structure means some samples are more related than others
+
+✅ PCA visualizes this structure in 2D
+
+✅ Clusters = genetic groups; outliers = check for problems
+
+✅ Always check structure before GWAS or genomic prediction
+
+✅ Use PCs as covariates to correct for structure
+
+---
+
+**Next:** [Module 3: GWAS](module-03.qmd) — Finding marker-trait associations

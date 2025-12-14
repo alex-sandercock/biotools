@@ -1,0 +1,26 @@
+# Quarto build artifacts
+/.quarto/
+_site/
+docs/
+**/*.quarto_ipynb
+
+# R/RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~

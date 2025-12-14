@@ -1,0 +1,245 @@
+---
+title: "Module 3: GWAS"
+subtitle: "Finding marker-trait associations"
+---
+
+## What is GWAS?
+
+**GWAS (Genome-Wide Association Study)** scans across all your markers to find which ones are associated with a trait of interest.
+
+### The Question GWAS Answers
+
+> "Which regions of the genome affect this trait?"
+
+For example:
+- Which markers are associated with disease resistance?
+- Where in the genome are yield QTLs located?
+- What's the genetic basis of flowering time?
+
+### How It Works
+
+GWAS tests each marker individually:
+
+1. **Group individuals** by their genotype at a marker
+2. **Compare phenotypes** between groups
+3. **Statistical test** — Is the difference significant?
+4. **Repeat** for every marker
+
+![GWAS concept](../../images/gwas-concept.png){fig-alt="Diagram showing how GWAS tests for association between marker genotypes and phenotype"}
+
+If individuals with allele "A" consistently have higher yield than those with allele "B", that marker is **associated** with yield.
+
+---
+
+## The Manhattan Plot
+
+GWAS results are typically shown as a **Manhattan plot**:
+
+![Manhattan plot example](../../images/manhattan-plot.png){fig-alt="Manhattan plot showing -log10 p-values across chromosomes with peaks indicating significant associations"}
+
+### Reading the Plot
+
+- **X-axis:** Position along the genome (chromosomes shown in alternating colors)
+- **Y-axis:** Significance level (-log10 p-value)
+- **Peaks:** Potential QTLs — markers significantly associated with the trait
+- **Threshold line:** Significance cutoff (markers above this are "hits")
+
+::: {.callout-tip}
+## Why "-log10"?
+A p-value of 0.001 becomes -log10(0.001) = 3. Smaller p-values (more significant) become larger numbers, making peaks easier to see.
+:::
+
+---
+
+## Why Population Structure Matters for GWAS
+
+Remember the PCA from Module 2? Population structure can cause **false positives** in GWAS.
+
+### The Problem
+
+Imagine:
+- Group A is from the north, has blue flowers, and happens to have allele "T" at SNP_123
+- Group B is from the south, has white flowers, and has allele "C" at SNP_123
+
+If you run GWAS for flower color, SNP_123 will look significant — but it's not actually causing the color difference. It's just **correlated with population structure**.
+
+![Confounding diagram](../../images/gwas-confounding.png){fig-alt="Diagram showing how population structure can confound GWAS results"}
+
+### The Solution
+
+Include **principal components** as covariates in the GWAS model. This "corrects" for population structure.
+
+BIGapp handles this automatically — the GWAS tab calculates principal components internally from a kinship matrix and uses BIC (Bayesian Information Criterion) to determine the optimal number of PCs to include.
+
+---
+
+## Running GWAS in BIGapp
+
+### What You Need
+
+1. **Filtered genotype data** (from Module 1)
+2. **Phenotype data** — Trait measurements for your samples
+
+### Demo: Running GWAS
+
+![Running GWAS in BIGapp](../../images/bigapp-gwas.gif){fig-alt="Animated GIF showing the GWAS workflow in BIGapp"}
+
+**Steps:**
+
+1. Go to **"GWAS"** in the sidebar
+2. Upload or select your phenotype file
+3. Select the trait to analyze
+4. Set your significance threshold
+5. Click **Run GWAS**
+
+BIGapp will automatically determine the optimal number of PCs using BIC — you can view the BIC plot in the results tabs.
+
+### Try It Yourself
+
+Using the example data:
+
+1. Navigate to the GWAS section
+2. Select a trait from the example phenotypes
+3. Run the analysis
+4. Check the BIC plot to see how many PCs were automatically selected
+5. Look at the Manhattan plot — do you see any significant peaks?
+
+---
+
+## Interpreting Results
+
+### Significant Markers
+
+Markers above the threshold line are your "hits." For each significant marker, you'll see:
+
+| Info | What it tells you |
+|------|-------------------|
+| **Chromosome & Position** | Where in the genome |
+| **P-value** | How significant |
+| **Effect size** | How much the allele changes the trait |
+| **MAF** | How common the associated allele is |
+
+### What Makes a Good Hit?
+
+✅ Clear peak (not just one marker, but a region)
+
+✅ Biologically plausible location (near candidate genes)
+
+✅ Consistent across environments/years
+
+✅ Effect size that matters for breeding
+
+### Red Flags
+
+⚠️ Single isolated marker (could be genotyping error)
+
+⚠️ Low MAF marker (could be spurious)
+
+⚠️ Inconsistent across analyses
+
+⚠️ Too many significant markers (check population structure correction)
+
+---
+
+## The QQ Plot
+
+The **QQ (quantile-quantile) plot** helps you check if your GWAS is well-calibrated:
+
+![QQ plot example](../../images/qq-plot.png){fig-alt="QQ plot showing observed vs expected p-values with most points on diagonal and deviation at the tail"}
+
+### Reading the QQ Plot
+
+- **Diagonal line:** What you'd expect if no markers were associated
+- **Points on the line:** Good — no inflation
+- **Deviation at the tail:** Expected — these are your true associations
+- **Deviation across all points:** Problem — likely uncontrolled population structure
+
+::: {.callout-important}
+## Check your QQ plot!
+If points deviate from the diagonal across the whole range (not just the tail), add more PCs or check for other issues.
+:::
+
+---
+
+## Polyploid GWAS
+
+BIGapp uses **GWASpoly** for polyploid species, which handles the complexity of having more than two allele copies.
+
+### Diploid vs. Polyploid
+
+| Ploidy | Possible genotypes | Example |
+|--------|-------------------|---------|
+| Diploid (2x) | AA, AB, BB | Most crops |
+| Tetraploid (4x) | AAAA, AAAB, AABB, ABBB, BBBB | Potato, alfalfa |
+| Hexaploid (6x) | 7 possible genotypes | Wheat |
+
+GWASpoly tests different **genetic models** to find associations:
+
+- **Additive:** Each allele copy has equal effect
+- **Simplex dominant:** One copy is enough for full effect
+- **Duplex dominant:** Two copies needed for effect
+- etc.
+
+BIGapp tests multiple models and shows you which fits best.
+
+---
+
+## From GWAS to Breeding
+
+### What Can You Do With GWAS Results?
+
+| Application | How |
+|-------------|-----|
+| **Marker-assisted selection** | Select for favorable alleles at significant markers |
+| **Candidate gene identification** | Look for genes near significant markers |
+| **Understanding trait architecture** | How many QTLs? Large or small effects? |
+| **Develop KASP markers** | Convert significant SNPs to cheap screening assays |
+
+### Limitations
+
+GWAS finds **associations**, not necessarily **causal variants**:
+
+- The significant marker might be near the causal gene, not in it
+- Rare variants with large effects may be missed
+- Small-effect QTLs need large sample sizes to detect
+
+---
+
+## Exercise
+
+Using the example data:
+
+1. Run GWAS for one trait
+2. Examine the Manhattan plot:
+   - How many significant peaks do you see?
+   - Which chromosome(s) have the strongest associations?
+3. Check the QQ plot:
+   - Does it look well-calibrated?
+   - Is there evidence of inflation?
+4. Look at the top hits:
+   - What are the effect sizes?
+   - What are the MAFs?
+
+**Discussion:**
+- Would you trust these results for marker-assisted selection?
+- What additional validation would you want?
+
+---
+
+## Key Takeaways
+
+✅ GWAS finds markers associated with traits
+
+✅ Manhattan plots show significance across the genome
+
+✅ Population structure correction (PCs) prevents false positives
+
+✅ QQ plots help diagnose problems
+
+✅ BIGapp handles polyploid GWAS automatically
+
+✅ GWAS hits are associations, not necessarily causal variants
+
+---
+
+**Next (Optional):** [Module 4: Genomic Selection](module-04.qmd) — Predicting breeding values from markers

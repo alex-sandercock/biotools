@@ -1,0 +1,41 @@
+---
+title: "Workshops"
+subtitle: "Hands-on training materials"
+---
+
+These materials accompany in-person and virtual workshops. Each workshop includes setup instructions and step-by-step modules. Materials are freely available for self-study.
+
+## Current Workshop
+
+### [Introduction to BIGapp for Plant Breeding](bigapp-2025/index.qmd)
+
+**Duration:** 2 hours
+
+**Audience:** Undergraduates, graduate students, and researchers interested in applying genomics to plant breeding
+
+**Prerequisites:** None — no coding experience required!
+
+**Topics covered:**
+
+- Why genomics matters for breeding decisions
+- Data import and quality control
+- Population structure analysis (PCA)
+- Genome-wide association study (GWAS)
+- Genomic selection *(optional/self-study)*
+
+[Go to Workshop Materials →](bigapp-2025/index.qmd)
+
+---
+
+## Workshop Format
+
+Workshops are designed as hands-on sessions where participants follow along using the online version of BIGapp. No software installation required — just a web browser.
+
+::: {.callout-tip}
+## Self-study
+Can't attend in person? Work through the materials at your own pace! Each module includes explanations, demos, and exercises.
+:::
+
+## Host a Workshop
+
+Interested in hosting this workshop at your institution? [Contact me](../about.qmd#contact) to discuss options.

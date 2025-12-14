@@ -1,0 +1,94 @@
+---
+title: "About Me"
+image: images/headshot.jpg
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: github
+      text: GitHub
+      href: https://github.com/alex-sandercock
+    - icon: mortarboard
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=2vvzUvoAAAAJ
+    - icon: file-earmark-text
+      text: ORCID
+      href: https://orcid.org/0000-0001-6897-1856
+    - icon: envelope
+      text: Email
+      href: mailto:aherranssanderco@ufl.edu
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/alexander-sandercock/
+---
+
+## Bio
+
+I am the Genomics Coordinator at [Breeding Insight](https://breedinginsight.org/), based at the University of Florida. I develop bioinformatics tools for plant and animal breeding applications, with a focus on making genomic analysis accessible to breeders working with both diploid and polyploid species.
+
+My work spans variant calling, population genetics, genomic selection, and data visualization — with tools built in **R**, **Python**, and **Rust**.
+
+## Education
+
+**Ph.D. in Genetics, Bioinformatics, and Computational Biology** | Virginia Tech | 2023
+
+**B.S. in Biology** | Millersville University of Pennsylvania | 2019
+
+## Experience
+
+**Genomics Coordinator** | Breeding Insight, University of Florida | Present
+
+- Develop open-source tools for genomic analysis (BIGapp, BIGr)
+- Support breeding programs across multiple crop and animal species
+- Train researchers in genomic data analysis
+
+## Skills & Expertise
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+**Programming**
+
+- R / Bioconductor / Shiny
+- Python / Snakemake
+- Rust
+- Bash / HPC
+:::
+
+::: {.g-col-12 .g-col-md-4}
+**Genomics**
+
+- Variant calling & QC
+- Population genetics
+- Genomic selection
+- GBS/DArT data
+- Polyploid analysis
+:::
+
+::: {.g-col-12 .g-col-md-4}
+**Other**
+
+- Shiny app development
+- Workshop instruction
+- Scientific writing
+:::
+
+:::
+
+## Publications
+
+See my [Google Scholar profile](https://scholar.google.com/citations?user=2vvzUvoAAAAJ) for a complete list.
+
+**Selected publications:**
+
+1. **Sandercock A.M.**, Peel M.D., Tanigut C.H., et al. (2025). BIGapp: A User-Friendly Genomic Tool Kit Identified Quantitative Trait Loci for Creeping Rootedness in Alfalfa. *The Plant Genome*. [DOI: 10.1002/tpg2.70067](https://doi.org/10.1002/tpg2.70067)
+
+2. **Sandercock A.M.**, Westbrook J.W., Zhang Q., Holliday J.A. (2024). A genome-guided strategy for climate resilience in American chestnut restoration populations. *PNAS* 121(30) e2403505121. [DOI: 10.1073/pnas.2403505121](https://doi.org/10.1073/pnas.2403505121)
+
+## Contact {#contact}
+
+The best way to reach me is by email: [aherranssanderco@ufl.edu](mailto:aherranssanderco@ufl.edu) or on [LinkedIn](https://www.linkedin.com/in/alexander-sandercock/).
+
+For tool-specific questions or bug reports, please open an issue on the relevant GitHub repository.
+
+I'm happy to discuss collaborations related to breeding program genomics, polyploid analysis, or tool development.

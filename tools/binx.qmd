@@ -1,0 +1,38 @@
+---
+title: "Binx"
+description: "A fast Rust-based CLI tool for polyploid and diploid genomic analysis"
+image: /images/logos/binx-logo.png
+categories: [Rust, CLI, Polyploid, Performance, VCF]
+status: Experimental
+order: 1
+---
+
+::: {.tool-hero}
+::: {.tool-logo}
+![](/images/logos/binx-logo.png)
+:::
+
+::: {.tool-info}
+[A fast Rust-based CLI tool for polyploid and diploid genomic analysis]{.lead}
+:::
+:::
+
+## Overview
+
+Binx is a command-line tool written in Rust for genomic analysis in polyploid and diploid species. It's designed for speed and efficiency when working with large genomic datasets.
+
+## Key Features
+
+- **High Performance** — Near C-level speed for computationally intensive tasks
+- **Memory Safe** — No runtime overhead from garbage collection
+- **Parallel Processing** — Safe concurrent processing of large files
+- **Single Binary** — Easy deployment with no dependencies
+- **Multi-ploidy Support** — Works with diploid and polyploid species
+
+## Links
+
+[Documentation](https://binx-docs.readthedocs.io) · [GitHub](https://github.com/alex-sandercock/Binx) · [Report Issues](https://github.com/alex-sandercock/Binx/issues)
+
+## Installation
+
+Download pre-compiled binaries from [GitHub Releases](https://github.com/alex-sandercock/Binx/releases).

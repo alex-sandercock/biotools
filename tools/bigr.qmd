@@ -1,0 +1,48 @@
+---
+title: "BIGr"
+description: "Core R package with genomic analysis functions for diploid and polyploid breeding programs"
+image: /images/logos/bigr-logo.png
+categories: [R, CRAN, Genomics, Polyploid, Breeding]
+status: Stable
+order: 3
+---
+
+::: {.tool-hero}
+::: {.tool-logo}
+![](/images/logos/bigr-logo.png)
+:::
+
+::: {.tool-info}
+[Core R package with genomic analysis functions for diploid and polyploid breeding programs]{.lead}
+:::
+:::
+
+## Overview
+
+BIGr is an R package developed by [Breeding Insight](https://breedinginsight.org/) that provides functions for analyzing genomic and pedigree data in diploid and polyploid breeding programs. It serves as the computational backbone for [BIGapp](bigapp.qmd) and can be used independently for scripted analyses.
+
+## Key Features
+
+- **Genotype Processing** — Quality control and filtering functions
+- **Relationship Matrices** — Calculate genomic relationship matrices
+- **Population Structure** — Tools for structure analysis
+- **Format Conversions** — Convert between common genomic data formats
+- **Polyploid Support** — Specialized functions for polyploid species
+
+## Links
+
+[Documentation](https://breeding-insight.github.io/BIGr_documentation) · [CRAN](https://cran.r-project.org/package=BIGr) · [GitHub](https://github.com/Breeding-Insight/BIGr) · [Report Issues](https://github.com/Breeding-Insight/BIGr/issues)
+
+## Installation
+
+```r
+install.packages("BIGr")
+```
+
+## Citation
+
+> Sandercock A.M., Taniguti C.H., Chinchilla-Vargas J., et al. (2025). BIGr: Breeding Insight Genomics Functions for Polyploid and Diploid Species. [GitHub](https://github.com/Breeding-Insight/BIGr)
+
+## Funding
+
+BIGr development is supported by [Breeding Insight](https://breedinginsight.org/), a USDA-funded initiative.

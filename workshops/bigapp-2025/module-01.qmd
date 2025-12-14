@@ -1,0 +1,232 @@
+---
+title: "Module 1: Data Import & Quality Control"
+subtitle: "Understanding your genomic data"
+---
+
+## Why Genomics in Plant Breeding? {#why-genomics}
+
+Before we dive into the software, let's understand **why** we're doing this.
+
+### The Traditional Breeding Challenge
+
+Plant breeders have always faced the same problem: **you can't see genes**. Historically, breeders had to:
+
+1. Make crosses
+2. Grow plants to maturity
+3. Measure traits (yield, disease resistance, etc.)
+4. Select the best individuals
+5. Repeat for many generations
+
+This works, but it's **slow** and **expensive** — especially for traits that take years to measure (like tree fruit quality) or require destroying the plant (like root characteristics).
+
+### What Genomic Data Gives Us
+
+With genomic markers (SNPs), we can:
+
+- **See inside the genome** — Identify which genetic variants each individual carries
+- **Predict performance** — Estimate breeding value before measuring the trait
+- **Select earlier** — Make decisions at the seedling stage
+- **Understand relationships** — See how individuals are related genetically
+
+::: {.callout-tip}
+## The bottom line
+Genomic data lets us make **better breeding decisions, faster**.
+:::
+
+### What is a SNP?
+
+A **SNP (Single Nucleotide Polymorphism)** is a position in the genome where individuals differ by a single DNA base.
+
+```
+Individual 1: ...ATCGATCG[A]TCGATCG...
+Individual 2: ...ATCGATCG[G]TCGATCG...
+                          ^
+                         SNP
+```
+
+When we "genotype" plants, we're measuring thousands of these SNPs across the genome. This gives us a **genomic fingerprint** for each individual.
+
+---
+
+## Getting Started with BIGapp
+
+### Open BIGapp
+
+Go to: **[big-demo.shinyapps.io/bigapp-main](https://big-demo.shinyapps.io/bigapp-main/)**
+
+You should see the BIGapp welcome screen:
+
+![BIGapp welcome screen](../../images/bigapp-welcome.png){fig-alt="Screenshot of BIGapp welcome page"}
+
+### The Interface
+
+BIGapp is organized into sections in the left sidebar:
+
+![BIGapp navigation](../../images/bigapp-nav.gif){fig-alt="Animated GIF showing the sidebar navigation"}
+
+| Section | What it does |
+|---------|--------------|
+| **Dosage Calling** | Convert raw read counts to genotype calls |
+| **Filtering** | Quality control for SNPs and samples |
+| **Summary Stats** | Calculate marker statistics (MAF, PIC, etc.) |
+| **PCA / DAPC** | Visualize population structure |
+| **GWAS** | Find marker-trait associations |
+| **Genomic Prediction** | Predict breeding values |
+
+---
+
+## Loading Data
+
+### What Data Do You Need?
+
+At minimum, you need **genotype data** — a matrix showing which alleles each individual carries at each SNP.
+
+| | SNP1 | SNP2 | SNP3 | ... |
+|---|---|---|---|---|
+| Plant_001 | 0 | 1 | 2 | ... |
+| Plant_002 | 1 | 1 | 0 | ... |
+| Plant_003 | 2 | 0 | 1 | ... |
+
+The numbers represent **dosage** — how many copies of the alternate allele:
+
+- **0** = homozygous reference (AA)
+- **1** = heterozygous (AB)
+- **2** = homozygous alternate (BB)
+
+::: {.callout-note}
+## Polyploids
+For polyploid crops (potato, blueberry, alfalfa, etc.), dosage can be higher: 0, 1, 2, 3, 4 for a tetraploid.
+:::
+
+### Demo: Loading Example Data
+
+Let's load the built-in example data:
+
+![Loading example data](../../images/bigapp-load-data.gif){fig-alt="Animated GIF showing how to load example data in BIGapp"}
+
+**Steps:**
+
+1. Click **"Dosage File Upload"** in the sidebar
+2. Under "Example Data", select **"Tetraploid Potato"** (or another example)
+3. Click **Load Data**
+4. You should see a confirmation with the number of samples and markers loaded
+
+### Try It Yourself
+
+Load the example data now. You should see something like:
+
+```
+✓ Data loaded successfully
+  Samples: 200
+  Markers: 5,000
+  Ploidy: 4
+```
+
+---
+
+## Quality Control: Why It Matters
+
+Raw genomic data almost always has problems:
+
+- **Bad markers** — Some SNPs don't amplify well or are in repetitive regions
+- **Bad samples** — Some DNA extractions fail or get contaminated
+- **Missing data** — Not every marker works for every sample
+
+If we don't filter these out, our downstream analyses will be **unreliable**.
+
+### Key Quality Metrics
+
+#### For SNPs (markers):
+
+| Metric | What it means | Typical filter |
+|--------|---------------|----------------|
+| **Call rate** | % of samples with data for this SNP | Keep if > 80% |
+| **MAF** | Minor allele frequency — how common is the rare allele? | Keep if > 5% |
+| **HWE** | Hardy-Weinberg equilibrium test | Remove extreme deviations |
+
+#### For Samples:
+
+| Metric | What it means | Typical filter |
+|--------|---------------|----------------|
+| **Call rate** | % of SNPs with data for this sample | Keep if > 80% |
+| **Heterozygosity** | How heterozygous is this individual? | Remove outliers |
+
+::: {.callout-tip}
+## Why filter by MAF?
+A SNP where 99% of individuals have the same allele doesn't tell us much — there's not enough variation to be useful for breeding decisions.
+:::
+
+### Demo: Filtering in BIGapp
+
+Watch how to apply quality filters:
+
+![Applying filters in BIGapp](../../images/bigapp-filtering.gif){fig-alt="Animated GIF showing the filtering interface"}
+
+**Steps:**
+
+1. Go to **"SNP Filtering"** in the sidebar
+2. Set **Minimum MAF** to 0.05 (5%)
+3. Set **Maximum missing rate** to 0.20 (20%)
+4. Click **Apply Filters**
+5. Note how many SNPs remain
+
+### Try It Yourself
+
+1. Apply MAF filter of 0.05
+2. Apply missing rate filter of 0.20
+3. How many SNPs remain after filtering?
+
+You should see the number of markers decrease — this is expected! We're removing low-quality data.
+
+---
+
+## Summary Statistics
+
+After filtering, let's look at what we have.
+
+### Minor Allele Frequency Distribution
+
+Go to **Summary Stats** → **MAF Distribution**
+
+![MAF distribution plot](../../images/bigapp-maf-dist.png){fig-alt="Histogram showing MAF distribution after filtering"}
+
+A healthy MAF distribution should be relatively flat — if it's highly skewed toward low values, you may need stricter filtering.
+
+### Sample Heterozygosity
+
+This shows how heterozygous each sample is. Look for:
+
+- **Outliers** — Samples that are way more or less heterozygous than others might be mislabeled, contaminated, or have poor DNA quality
+- **Expected patterns** — Inbred lines should be less heterozygous than F1 hybrids
+
+---
+
+## Exercise
+
+Using the example data:
+
+1. Load the data
+2. Apply filters: MAF > 0.05, missing rate < 0.20
+3. Check the summary statistics
+4. **Question:** What percentage of markers were removed by filtering?
+
+::: {.callout-tip collapse="true"}
+## Hint
+Compare the number of markers before and after filtering. The difference, divided by the original number, gives you the percentage removed.
+:::
+
+---
+
+## Key Takeaways
+
+✅ Genomic markers (SNPs) let us "see" genetic variation
+
+✅ Quality control is essential — garbage in, garbage out
+
+✅ Filter on MAF, call rate, and heterozygosity
+
+✅ Check your data before running analyses
+
+---
+
+**Next:** [Module 2: Population Structure & PCA](module-02.qmd) — Understanding how your samples are related

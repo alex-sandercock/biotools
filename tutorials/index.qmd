@@ -1,0 +1,55 @@
+---
+title: "Tutorials"
+subtitle: "Self-paced learning materials for genomic data analysis"
+---
+
+These tutorials are designed to be worked through at your own pace. Each includes code examples, sample data, and explanations.
+
+::: {.callout-tip}
+## New to bioinformatics?
+Start with [Tutorial 1: Introduction](tutorial-01-intro.qmd) which covers the basics.
+:::
+
+## Getting Started
+
+| Tutorial | Description | Time |
+|----------|-------------|------|
+| [1. Introduction](tutorial-01-intro.qmd) | Overview and environment setup | 30 min |
+| [2. Working with Data](tutorial-02-data.qmd) | Loading, inspecting, and manipulating genomic data | 45 min |
+
+## Advanced Topics
+
+| Tutorial | Description | Time |
+|----------|-------------|------|
+| [3. Advanced Analysis](tutorial-03-advanced.qmd) | Complex workflows and custom analyses | 60 min |
+
+## Sample Data
+
+Sample datasets for these tutorials can be downloaded here:
+
+- [sample_data.vcf.gz](files/sample_data.vcf.gz) (5 MB) — Example VCF file
+- [sample_metadata.csv](files/sample_metadata.csv) (10 KB) — Sample information
+
+Or load directly in R:
+
+```r
+# Example data is included in the package
+library(toolone)
+data("example_vcf")
+```
+
+## Prerequisites
+
+These tutorials assume you have:
+
+- R (≥ 4.0) and RStudio installed
+- Basic familiarity with R syntax
+- The following packages installed:
+
+```r
+install.packages(c("tidyverse", "vcfR", "toolone"))
+```
+
+## Feedback
+
+Found an error or have a suggestion? Please [open an issue](https://github.com/alex-sandercock/bioinfo-tools-site/issues) or email me.

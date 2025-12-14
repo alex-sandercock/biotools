@@ -1,0 +1,193 @@
+---
+title: "Tutorial 1: Introduction"
+description: "Getting started with genomic data analysis"
+author: "Alexander Sandercock"
+date: "2025-01-15"
+categories: [beginner, R, setup]
+---
+
+## Learning Objectives
+
+By the end of this tutorial, you will be able to:
+
+1. Set up your R environment for genomic analysis
+2. Load and inspect a VCF file
+3. Understand the basic structure of variant data
+
+## Prerequisites
+
+- R (≥ 4.0) installed
+- RStudio (recommended)
+- ~30 minutes
+
+## Setup
+
+First, install the required packages:
+ 
+```{r}
+#| eval: false
+install.packages(c("vcfR", "tidyverse"))
+
+# Install toolone from GitHub
+# install.packages("devtools")
+devtools::install_github("Breeding-Insight/BIGr")
+```
+
+Load the packages:
+
+```{r}
+#| eval: false
+library(vcfR)
+library(tidyverse)
+library(toolone)
+```
+
+## Loading Data
+
+### From a file
+
+```{r}
+#| eval: false
+# Read a VCF file
+vcf <- read.vcfR("path/to/your/file.vcf.gz")
+
+# Check what you loaded
+vcf
+```
+
+Expected output:
+
+```
+***** Object of Class vcfR *****
+1000 samples
+50000 variants
+Object size: 125.3 Mb
+```
+
+### Using example data
+
+For this tutorial, we'll use built-in example data:
+
+```{r}
+#| eval: false
+data("example_vcf", package = "toolone")
+vcf <- example_vcf
+```
+
+## Inspecting the Data
+
+### Basic information
+
+```{r}
+#| eval: false
+# How many samples?
+ncol(vcf@gt) - 1
+
+# How many variants?
+nrow(vcf@fix)
+
+# What chromosomes are present?
+unique(vcf@fix[, "CHROM"])
+```
+
+### The VCF structure
+
+A VCF file has three main components:
+
+1. **Meta information** (header lines starting with `##`)
+2. **Fixed fields** (CHROM, POS, ID, REF, ALT, QUAL, FILTER, INFO)
+3. **Genotype data** (sample-level information)
+
+```{r}
+#| eval: false
+# View the fixed fields
+head(vcf@fix)
+
+# View genotype data for first few samples
+vcf@gt[1:5, 1:5]
+```
+
+::: {.callout-note}
+## VCF Format Details
+For a complete description of VCF format, see the [VCF specification](https://samtools.github.io/hts-specs/VCFv4.3.pdf).
+:::
+
+## Extracting Information
+
+### Get genotypes as a matrix
+
+```{r}
+#| eval: false
+# Extract genotypes (GT field)
+gt_matrix <- extract.gt(vcf, element = "GT")
+
+# View dimensions
+dim(gt_matrix)
+
+# Preview
+gt_matrix[1:5, 1:5]
+```
+
+### Get depth information
+
+```{r}
+#| eval: false
+# Extract read depth (DP field)
+dp_matrix <- extract.gt(vcf, element = "DP", as.numeric = TRUE)
+
+# Summary statistics
+summary(as.vector(dp_matrix))
+```
+
+## Quick Visualization
+
+Let's make a simple plot of read depth distribution:
+
+```{r}
+#| eval: false
+# Flatten the matrix and plot
+dp_values <- as.vector(dp_matrix)
+dp_values <- dp_values[!is.na(dp_values)]
+
+hist(dp_values, 
+     breaks = 50, 
+     main = "Read Depth Distribution",
+     xlab = "Depth",
+     col = "steelblue")
+```
+
+![Example depth histogram](../images/depth-histogram-example.png){fig-alt="Histogram showing read depth distribution"}
+
+## Summary
+
+In this tutorial, you learned how to:
+
+- ✅ Install and load required packages
+- ✅ Read VCF files into R
+- ✅ Inspect basic properties of variant data
+- ✅ Extract genotype and depth matrices
+- ✅ Create a simple visualization
+
+## Next Steps
+
+Continue to [Tutorial 2: Working with Data](tutorial-02-data.qmd) to learn about filtering and manipulating variant data.
+
+## Exercises
+
+Try these on your own:
+
+1. Load your own VCF file and check how many samples and variants it contains
+2. Extract the `GQ` (genotype quality) field and plot its distribution
+3. Find the chromosome with the most variants
+
+::: {.callout-tip collapse="true"}
+## Exercise 3 Solution
+
+```{r}
+#| eval: false
+# Count variants per chromosome
+table(vcf@fix[, "CHROM"]) |> 
+  sort(decreasing = TRUE) |> 
+  head()
+```
+:::

@@ -1,0 +1,55 @@
+---
+title: "SimpleSnek"
+description: "Snakemake automated workflow for GATK variant calling pipeline"
+image: /images/logos/python-logo.png
+categories: [Python, Snakemake, GATK, Variant Calling, Pipeline]
+status: Active Development
+order: 5
+---
+
+::: {.tool-hero}
+::: {.tool-logo}
+![](/images/logos/python-logo.png)
+:::
+
+::: {.tool-info}
+[Snakemake automated workflow for GATK variant calling pipeline]{.lead}
+:::
+:::
+
+## Overview
+
+SimpleSnek is a Snakemake workflow that automates the GATK variant calling pipeline. It provides a reproducible, scalable approach to processing sequencing data from raw reads to called variants.
+
+## Key Features
+
+- **Reproducible** — Define your workflow once, run it consistently
+- **Scalable** — Runs on laptops or HPC clusters with minimal changes
+- **Parallel** — Automatic job scheduling and dependency resolution
+- **Resumable** — Restart failed runs without re-running completed steps
+
+## Pipeline Steps
+
+1. **Quality control** — FastQC, trimming
+2. **Alignment** — BWA-MEM to reference genome
+3. **Post-processing** — Mark duplicates, BQSR
+4. **Variant calling** — GATK HaplotypeCaller
+5. **Joint genotyping** — Combine samples
+6. **Filtering** — VQSR or hard filtering
+
+## Prerequisites
+
+- Python 3.8+
+- Snakemake
+- GATK 4
+- BWA, samtools
+
+## Links
+
+[GitHub](https://github.com/alex-sandercock/SimpleSnek) · [Report Issues](https://github.com/alex-sandercock/SimpleSnek/issues)
+
+## Installation
+
+```bash
+git clone https://github.com/alex-sandercock/SimpleSnek.git
+```

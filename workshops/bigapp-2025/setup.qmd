@@ -1,0 +1,72 @@
+---
+title: "Setup Instructions"
+subtitle: "Optional — for local installation after the workshop"
+---
+
+::: {.callout-note}
+## For the workshop, just use the online version!
+**[big-demo.shinyapps.io/bigapp-main](https://big-demo.shinyapps.io/bigapp-main/)**
+
+The instructions below are for installing BIGapp on your own computer, which you might want to do after the workshop for working with your own data.
+:::
+
+---
+
+## Local Installation
+
+### Step 1: Install R
+
+Download and install R (version 4.4.0 or higher) from [CRAN](https://cran.r-project.org/).
+
+- [Download R for Windows](https://cran.r-project.org/bin/windows/base/)
+- [Download R for Mac](https://cran.r-project.org/bin/macosx/)
+- [Download R for Linux](https://cran.r-project.org/bin/linux/)
+
+### Step 2: Install BIGapp
+
+Open R and run these commands:
+
+```r
+# Install required package managers
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+install.packages("remotes")
+
+# Install BIGapp (this may take 10-20 minutes)
+BiocManager::install("Breeding-Insight/BIGapp", dependencies = TRUE)
+```
+
+### Step 3: Run BIGapp
+
+```r
+library(BIGapp)
+BIGapp::run_app()
+```
+
+BIGapp will open in your web browser.
+
+## Troubleshooting
+
+::: {.callout-warning collapse="true"}
+## Installation errors?
+
+Try installing in a fresh R session. If you still have issues:
+
+1. Note the exact error message
+2. [Open an issue on GitHub](https://github.com/Breeding-Insight/BIGapp/issues)
+3. Include your operating system and R version (`R.version.string`)
+:::
+
+::: {.callout-warning collapse="true"}
+## Mac M1/M2/M3 users
+
+You may need Xcode command line tools:
+
+```bash
+xcode-select --install
+```
+:::
+
+## RStudio (Optional)
+
+[RStudio](https://posit.co/download/rstudio-desktop/) provides a nicer interface for running R, but it's not required for BIGapp.
