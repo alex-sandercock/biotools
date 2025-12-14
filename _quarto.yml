@@ -1,0 +1,101 @@
+project:
+  type: website
+  output-dir: docs  # GitHub Pages can serve from /docs folder
+
+website:
+  title: "Alexander Sandercock | Bioinformatics Tools"
+  description: "Open-source bioinformatics tools for plant and animal breeding genomics, including BIGapp, BIGr, and castgen"
+
+  # SEO and social sharing
+  open-graph: true
+  twitter-card:
+    creator: "@sandercock_alex"
+    site: "@sandercock_alex"
+
+  # Site metadata
+  site-url: https://alex-sandercock.github.io/biotools
+  repo-url: https://github.com/alex-sandercock/biotools
+  repo-actions: [issue]
+  
+  # Top navigation bar
+  navbar:
+    background: dark
+    left:
+      - href: index.qmd
+        text: Home
+      - text: Tools
+        menu:
+          - href: tools/index.qmd
+            text: Overview
+          - text: "---"
+          - href: tools/binx.qmd
+            text: Binx
+          - href: tools/bigapp.qmd
+            text: BIGapp
+          - href: tools/bigr.qmd
+            text: BIGr
+          - href: tools/castgen.qmd
+            text: castgen
+          - href: tools/simplesnek.qmd
+            text: SimpleSnek
+      - text: Tutorials
+        href: tutorials/index.qmd
+      - text: Workshops
+        href: workshops/index.qmd
+      - href: resources.qmd
+        text: Resources
+      - href: about.qmd
+        text: About
+    right:
+      - icon: github
+        href: https://github.com/alex-sandercock
+        aria-label: GitHub
+  
+  # Sidebar for tutorials (appears only in tutorials section)
+  sidebar:
+    - title: "Tutorials"
+      style: floating
+      contents:
+        - tutorials/index.qmd
+        - section: "Getting Started"
+          contents:
+            - tutorials/tutorial-01-intro.qmd
+            - tutorials/tutorial-02-data.qmd
+        - section: "Advanced Topics"
+          contents:
+            - tutorials/tutorial-03-advanced.qmd
+    
+    - title: "Workshops"
+      contents:
+        - workshops/index.qmd
+        - section: "BIGapp Workshop"
+          contents:
+            - workshops/bigapp-2025/index.qmd
+            - workshops/bigapp-2025/setup.qmd
+            - workshops/bigapp-2025/module-01.qmd
+            - workshops/bigapp-2025/module-02.qmd
+            - workshops/bigapp-2025/module-03.qmd
+            - workshops/bigapp-2025/module-04.qmd
+
+  page-footer:
+    center: |
+      © 2025 Alexander Sandercock · Built with [Quarto](https://quarto.org)
+    right:
+      - icon: github
+        href: https://github.com/alex-sandercock
+
+  # Search
+  search:
+    location: navbar
+    type: overlay
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    code-copy: true
+    code-overflow: wrap
+    highlight-style: github

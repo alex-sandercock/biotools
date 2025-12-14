@@ -1,0 +1,318 @@
+---
+title: "Module 4: Genomic Selection"
+subtitle: "Optional — Predicting breeding values from markers"
+---
+
+::: {.callout-note}
+## Extra Material
+This module is optional/self-study. If we have time in the workshop, we'll cover the basics. Otherwise, work through this on your own!
+:::
+
+## What is Genomic Selection?
+
+**Genomic selection (GS)** uses DNA markers to predict an individual's **breeding value** — how good their genetics are for a trait of interest.
+
+### The Traditional Problem
+
+To know if a plant is a good parent, you traditionally need to:
+
+1. Cross it with other plants
+2. Grow the offspring
+3. Measure the trait in offspring
+4. Calculate breeding value from offspring performance
+
+This is called **progeny testing** and it takes **years**.
+
+### The Genomic Solution
+
+With genomic selection:
+
+1. Genotype individuals with markers
+2. Train a prediction model on individuals with **both** genotypes and phenotypes
+3. Use the model to predict breeding values for individuals with **only** genotypes
+
+![Genomic selection concept](../../images/gs-concept.png){fig-alt="Diagram showing genomic selection workflow: training set with genotypes and phenotypes, prediction for genotyped-only individuals"}
+
+::: {.callout-tip}
+## The key insight
+We can predict performance **before** measuring the trait — even in seedlings!
+:::
+
+---
+
+## How Does It Work?
+
+### The Basic Idea
+
+The model learns **which marker alleles are associated with higher trait values**.
+
+```
+Marker effect estimates:
+  SNP_001: +0.5 (good allele increases yield)
+  SNP_002: -0.2 (bad allele decreases yield)
+  SNP_003: +0.1
+  ...
+```
+
+To predict a new individual, we sum up the effects of all their alleles:
+
+```
+Individual X has:
+  SNP_001: 2 copies of good allele → 2 × 0.5 = +1.0
+  SNP_002: 1 copy of bad allele  → 1 × -0.2 = -0.2
+  SNP_003: 0 copies             → 0 × 0.1 =  0.0
+  ...
+  ────────────────────────────────────────────
+  Predicted breeding value = sum of all effects
+```
+
+### What You Need
+
+| Component | Description | Required? |
+|-----------|-------------|-----------|
+| **Genotypes** | SNP data for all individuals | Yes |
+| **Phenotypes** | Trait measurements | For training set |
+| **Training set** | Individuals with both | Yes |
+| **Prediction set** | Individuals to predict | Yes |
+
+---
+
+## Prediction Accuracy
+
+### What is Accuracy?
+
+**Prediction accuracy** is the correlation between predicted and true breeding values.
+
+| Accuracy | Interpretation |
+|----------|----------------|
+| 0.8+ | Excellent — GS very effective |
+| 0.6-0.8 | Good — GS useful for selection |
+| 0.4-0.6 | Moderate — Some benefit |
+| <0.4 | Low — May not be worth it |
+
+### What Affects Accuracy?
+
+| Factor | Effect on accuracy |
+|--------|-------------------|
+| **Training set size** | Larger → Higher |
+| **Heritability** | Higher → Higher |
+| **Marker density** | More markers → Higher (up to a point) |
+| **Relatedness** | More related training/prediction → Higher |
+| **Trait architecture** | Few large QTL → Higher |
+
+::: {.callout-note}
+## Rule of thumb
+You usually need **at least 200-500 individuals** in your training set for reasonable accuracy. More is better!
+:::
+
+---
+
+## Running Genomic Prediction in BIGapp
+
+### What You Need
+
+1. **Filtered genotype data** (from Module 1)
+2. **Phenotype data** — A file with sample IDs and trait values
+
+Phenotype file format:
+
+```
+Sample_ID,Yield,Height,Flowering
+Plant_001,125.3,85.2,42
+Plant_002,118.7,92.1,45
+Plant_003,132.1,78.5,38
+...
+```
+
+### Demo: Running Prediction
+
+![Genomic prediction in BIGapp](../../images/bigapp-gs.gif){fig-alt="Animated GIF showing the genomic prediction workflow"}
+
+**Steps:**
+
+1. Go to **"Genomic Prediction"** in the sidebar
+2. Upload your phenotype file
+3. Select the trait to predict
+4. Choose the model (rrBLUP is a good default)
+5. Click **Run Prediction**
+
+### Understanding the Output
+
+BIGapp provides:
+
+1. **Cross-validation accuracy** — Estimated prediction accuracy
+2. **Predicted breeding values** — For all individuals
+3. **Plots** — Predicted vs. observed values
+
+---
+
+## Cross-Validation: Testing Your Model
+
+Since we don't know the "true" breeding values, we estimate accuracy using **cross-validation**:
+
+1. **Split** the training data into folds (e.g., 5 folds)
+2. **Train** on 4 folds, predict the 5th
+3. **Repeat** for all folds
+4. **Calculate** correlation between predicted and observed
+
+![Cross-validation diagram](../../images/cross-validation.png){fig-alt="Diagram showing 5-fold cross-validation process"}
+
+BIGapp does this automatically and reports the average accuracy.
+
+### Try It Yourself
+
+1. Load the example data with phenotypes
+2. Run genomic prediction for a trait
+3. What accuracy do you get?
+4. Try different models — does accuracy change?
+
+---
+
+## Interpreting Results
+
+### Predicted Breeding Values (GEBVs)
+
+The output includes a **Genomic Estimated Breeding Value (GEBV)** for each individual.
+
+```
+Sample_ID    GEBV      Rank
+Plant_047    +2.34     1
+Plant_012    +2.18     2
+Plant_089    +1.95     3
+...
+Plant_023    -1.87     198
+Plant_056    -2.15     199
+Plant_071    -2.43     200
+```
+
+Higher GEBV = better genetics for that trait.
+
+### How to Use GEBVs
+
+| Use case | How to apply |
+|----------|--------------|
+| **Selection** | Select top-ranked individuals as parents |
+| **Culling** | Remove low-ranked individuals early |
+| **Crossing** | Plan crosses to maximize GEBV of offspring |
+| **Ranking** | Prioritize individuals for phenotyping |
+
+::: {.callout-tip}
+## Practical tip
+Even moderate accuracy (0.5-0.6) can dramatically improve selection efficiency because you can evaluate **many more individuals** than with traditional phenotyping.
+:::
+
+---
+
+## Choosing a Model
+
+BIGapp offers several prediction models:
+
+| Model | Best for | Notes |
+|-------|----------|-------|
+| **rrBLUP** | Most situations | Fast, assumes many small QTL |
+| **GBLUP** | When you have relationship matrix | Uses genomic relationships |
+| **Bayesian** | Large-effect QTL | Slower, more flexible |
+
+**Recommendation:** Start with rrBLUP. It works well for most traits in most crops.
+
+---
+
+## Practical Considerations
+
+### Training Population Design
+
+Your training set should:
+
+- **Represent the breeding population** — Similar germplasm
+- **Cover the range of trait values** — Not just extremes
+- **Be large enough** — 200+ individuals minimum
+- **Have accurate phenotypes** — GS can't fix bad data
+
+### When GS Works Best
+
+✅ Traits that are expensive/slow to phenotype
+
+✅ Traits with moderate-high heritability
+
+✅ Breeding programs with existing genotyping
+
+✅ When you can select among many candidates
+
+### When GS May Not Help
+
+❌ Very low heritability traits
+
+❌ Small breeding programs (<100 selection candidates)
+
+❌ Traits easy/cheap to phenotype directly
+
+❌ No connection between training and selection populations
+
+---
+
+## Exercise
+
+Using the example data:
+
+1. Load phenotype data
+2. Run genomic prediction for one trait
+3. Note the cross-validation accuracy
+4. Identify the top 10 individuals by GEBV
+5. Run prediction for a different trait — is accuracy similar?
+
+**Discussion questions:**
+
+- Would you use GS for this trait in your program?
+- What accuracy would you need to make GS worthwhile?
+- How could you improve accuracy?
+
+---
+
+## Key Takeaways
+
+✅ Genomic selection predicts breeding values from markers
+
+✅ Requires a training set with genotypes AND phenotypes
+
+✅ Cross-validation estimates prediction accuracy
+
+✅ Even moderate accuracy enables selection among many candidates
+
+✅ rrBLUP is a good default model for most situations
+
+✅ Training population design matters!
+
+---
+
+## You've Completed the Workshop!
+
+You've learned the core genomic analysis workflow:
+
+1. **Import & QC** → Clean, filtered genotype data
+2. **PCA** → Understand population structure
+3. **GWAS** → Find markers associated with traits
+4. **Genomic Selection** → Predict breeding values
+
+From here, you might explore:
+
+- **Your own data** — Apply these methods to your breeding program
+- **Advanced models** — Multi-trait prediction, GxE, etc.
+- **Marker-assisted selection** — Combine GWAS hits with GS
+
+---
+
+## Resources
+
+- [BIGapp GitHub](https://github.com/Breeding-Insight/BIGapp) — Report issues, request features
+- [BIGapp Tutorials](https://scribehow.com/page/BIGapp_Tutorials__FdLsY9ZxQsi6kgT9p-U2Zg) — Step-by-step guides
+- [Genomic Selection Review](https://doi.org/10.1534/genetics.110.116590) — Meuwissen et al., the foundational paper
+
+---
+
+## Questions?
+
+- Email: [aherranssanderco@ufl.edu](mailto:aherranssanderco@ufl.edu)
+- GitHub: [github.com/alex-sandercock](https://github.com/alex-sandercock)
+- BIGapp issues: [github.com/Breeding-Insight/BIGapp/issues](https://github.com/Breeding-Insight/BIGapp/issues)
+
+Thank you for attending!

@@ -1,0 +1,24 @@
+---
+title: "Tutorial 3: Advanced Analysis"
+description: "Complex workflows and custom analyses"
+author: "Alexander Sandercock"
+date: "2025-01-15"
+categories: [advanced, R, workflows]
+---
+
+::: {.callout-warning}
+## Under Construction
+This tutorial is coming soon!
+:::
+
+## Learning Objectives
+
+By the end of this tutorial, you will be able to:
+
+1. Build reproducible analysis pipelines
+2. Integrate multiple tools
+3. Generate publication-ready figures
+
+## Prerequisites
+
+Complete [Tutorial 1](tutorial-01-intro.qmd) and [Tutorial 2](tutorial-02-data.qmd) first.

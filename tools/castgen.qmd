@@ -1,0 +1,49 @@
+---
+title: "castgen"
+description: "R package for estimating sample sizes to capture genetic diversity in breeding populations"
+image: /images/logos/r-logo.png
+categories: [R, CRAN, Conservation, Population Genetics, Sampling]
+status: Stable
+order: 4
+---
+
+::: {.tool-hero}
+::: {.tool-logo}
+![](/images/logos/r-logo.png)
+:::
+
+::: {.tool-info}
+[R package for estimating sample sizes to capture genetic diversity in breeding populations]{.lead}
+:::
+:::
+
+## Overview
+
+castgen provides methods for estimating the number of individuals to sample from a population in order to capture a predefined percentage of genetic diversity. Originally developed for the American chestnut landscape genomics project, it's useful for conservation genetics and breeding program design.
+
+## Key Features
+
+- **VCF or Matrix Input** — Accepts VCF files or genotype matrices
+- **Fast Computation** — Parallel processing support
+- **Confidence Intervals** — Statistical bounds on sample size estimates
+- **R Reimplementation** — Much faster than the original Python version
+
+## Use Cases
+
+- **Conservation genetics** — Minimum sample size for seed banks or germplasm collections
+- **Breeding programs** — Plan crossing schemes that maintain diversity
+- **Population studies** — Optimize sampling strategies for surveys
+
+## Links
+
+[CRAN](https://cran.r-project.org/package=castgen) · [GitHub](https://github.com/alex-sandercock/castgen) · [Report Issues](https://github.com/alex-sandercock/castgen/issues)
+
+## Installation
+
+```r
+install.packages("castgen")
+```
+
+## Citation
+
+> Sandercock A.M., Westbrook J.W., Zhang Q., Holliday J.A. (2024). A genome-guided strategy for climate resilience in American chestnut restoration populations. *PNAS* 121(30) e2403505121. [DOI: 10.1073/pnas.2403505121](https://doi.org/10.1073/pnas.2403505121)

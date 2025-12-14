@@ -1,0 +1,24 @@
+---
+title: "Tutorial 2: Working with Data"
+description: "Loading, inspecting, and manipulating genomic data"
+author: "Alexander Sandercock"
+date: "2025-01-15"
+categories: [beginner, R, data-manipulation]
+---
+
+::: {.callout-warning}
+## Under Construction
+This tutorial is coming soon!
+:::
+
+## Learning Objectives
+
+By the end of this tutorial, you will be able to:
+
+1. Filter variants by quality metrics
+2. Subset data by samples or regions
+3. Handle missing data
+
+## Coming Soon
+
+Check back for the full tutorial, or [contact me](../about.qmd#contact) if you need this content sooner.

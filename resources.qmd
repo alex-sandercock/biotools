@@ -1,0 +1,150 @@
+---
+title: "Resources"
+subtitle: "Curated links for bioinformatics and breeding"
+toc: true
+---
+
+A collection of useful tools, tutorials, and references. This is not exhaustive — just things I've found genuinely helpful.
+
+::: {.callout-tip}
+## Suggest a resource
+Know of something that should be here? [Let me know](about.qmd#contact) or [open a PR](https://github.com/alex-sandercock/biotools).
+:::
+
+## Learning Bioinformatics
+
+### General
+
+- [Bioinformatics Data Skills](https://www.oreilly.com/library/view/bioinformatics-data-skills/9781449367480/) — Vince Buffalo's excellent book on practical skills
+- [Rosalind](https://rosalind.info/) — Learn bioinformatics through problem solving
+- [Harvard Chan Bioinformatics Core Training](https://hbctraining.github.io/main/) — High-quality free workshops
+
+### R for Genomics
+
+- [R for Data Science](https://r4ds.hadley.nz/) — Foundation for any R work
+- [Bioconductor](https://www.bioconductor.org/) — Core packages for genomic analysis
+- [vcfR documentation](https://knausb.github.io/vcfR_documentation/) — The resource that inspired this site
+
+### Python for Genomics
+
+- [Biopython Tutorial](https://biopython.org/DIST/docs/tutorial/Tutorial.html)
+- [scikit-allel](https://scikit-allel.readthedocs.io/) — Population genetics in Python
+
+### Command Line & HPC
+
+- [Software Carpentry: Shell](https://swcarpentry.github.io/shell-novice/)
+- [HPC Carpentry](https://www.hpc-carpentry.org/)
+
+## Variant Calling & Quality Control
+
+### Tools
+
+| Tool | Purpose | Link |
+|------|---------|------|
+| bcftools | VCF/BCF manipulation | [samtools.github.io/bcftools](https://samtools.github.io/bcftools/) |
+| GATK | Variant discovery | [gatk.broadinstitute.org](https://gatk.broadinstitute.org/) |
+| VCFtools | VCF filtering/stats | [vcftools.github.io](https://vcftools.github.io/) |
+| Plink | GWAS, population genetics | [cog-genomics.org/plink](https://www.cog-genomics.org/plink/) |
+
+### Tutorials
+
+- [GATK Best Practices](https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows)
+- [VCF format specification](https://samtools.github.io/hts-specs/VCFv4.3.pdf)
+
+## Genomic Selection & Breeding
+
+### Software
+
+| Tool | Purpose | Link |
+|------|---------|------|
+| BLUPF90 | Genetic evaluation | [nce.ads.uga.edu/html/projects/programs/](http://nce.ads.uga.edu/html/projects/programs/) |
+| rrBLUP | Ridge regression BLUP | [CRAN](https://cran.r-project.org/package=rrBLUP) |
+| BGLR | Bayesian regression | [CRAN](https://cran.r-project.org/package=BGLR) |
+| sommer | GWAS & GS | [CRAN](https://cran.r-project.org/package=sommer) |
+| AlphaSimR | Breeding simulations | [CRAN](https://cran.r-project.org/package=AlphaSimR) |
+
+### Reading
+
+- Meuwissen, Hayes & Goddard (2001) — The original genomic selection paper
+- [Genomic Selection in Animals and Plants](https://link.springer.com/book/10.1007/978-3-319-59978-8)
+
+## Population Genetics
+
+### Tools
+
+| Tool | Purpose | Link |
+|------|---------|------|
+| ADMIXTURE | Ancestry estimation | [dalexander.github.io/admixture](https://dalexander.github.io/admixture/) |
+| STRUCTURE | Population structure | [web.stanford.edu/group/pritchardlab/structure.html](https://web.stanford.edu/group/pritchardlab/structure.html) |
+| fastSTRUCTURE | Fast STRUCTURE | [rajanil.github.io/fastStructure](https://rajanil.github.io/fastStructure/) |
+| PopGenome | R package | [CRAN](https://cran.r-project.org/package=PopGenome) |
+
+### Tutorials
+
+- [Population Genetics in R](https://grunwaldlab.github.io/Population_Genetics_in_R/)
+- [adegenet tutorials](https://adegenet.r-forge.r-project.org/)
+
+## Data Visualization
+
+### R Packages
+
+- [ggplot2](https://ggplot2.tidyverse.org/) — Grammar of graphics
+- [plotly](https://plotly.com/r/) — Interactive plots
+- [ComplexHeatmap](https://jokergoo.github.io/ComplexHeatmap-reference/book/) — Publication-quality heatmaps
+- [CMplot](https://github.com/YinLiLin/CMplot) — Manhattan and QQ plots
+
+### Color Palettes
+
+- [viridis](https://cran.r-project.org/package=viridis) — Colorblind-friendly palettes
+- [RColorBrewer](https://colorbrewer2.org/) — Classic palettes
+- [Coolors](https://coolors.co/) — Color scheme generator
+
+## Databases & Data Sources
+
+### Reference Genomes
+
+- [Ensembl](https://www.ensembl.org/)
+- [NCBI Genome](https://www.ncbi.nlm.nih.gov/genome/)
+- [Phytozome](https://phytozome-next.jgi.doe.gov/) (plants)
+
+### Variant Databases
+
+- [dbSNP](https://www.ncbi.nlm.nih.gov/snp/)
+- [EVA](https://www.ebi.ac.uk/eva/) — European Variation Archive
+- [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/) (human clinical variants)
+
+### Breeding/Agricultural
+
+- [GRIN](https://www.ars-grin.gov/) — USDA germplasm
+- [Breedbase](https://breedbase.org/) — Breeding database platform
+- [DeltaBreed](https://breedinginsight.org/learning-hub/deltabreed/) — Breeding Insight data management platform
+
+## Reproducibility & Workflows
+
+### Workflow Managers
+
+- [Nextflow](https://www.nextflow.io/) — Popular for bioinformatics
+- [Snakemake](https://snakemake.readthedocs.io/) — Python-based
+- [targets](https://books.ropensci.org/targets/) — R pipelines
+
+### Containers
+
+- [Docker](https://www.docker.com/)
+- [Singularity/Apptainer](https://apptainer.org/) — HPC-friendly
+- [BioContainers](https://biocontainers.pro/) — Pre-built bioinformatics containers
+
+### Documentation
+
+- [Quarto](https://quarto.org/) — What this site is built with
+- [MkDocs Material](https://squidfunk.github.io/mkdocs-material/)
+
+## Communities
+
+- [Biostars](https://www.biostars.org/) — Bioinformatics Q&A
+- [SEQanswers](http://seqanswers.com/)
+- [r/bioinformatics](https://www.reddit.com/r/bioinformatics/)
+- [Bioconductor Slack](https://bioc-community.herokuapp.com/)
+
+---
+
+*Last updated: January 2025*

@@ -1,0 +1,51 @@
+---
+title: "BIGapp"
+description: "A user-friendly R Shiny app to analyze genomic data without command-line tools, supporting diploid and polyploid species"
+image: /images/logos/bigapp-logo.png
+categories: [R, Shiny, GWAS, Genomic Selection, PCA, Polyploid]
+status: Stable
+order: 2
+---
+
+::: {.tool-hero}
+::: {.tool-logo}
+![](/images/logos/bigapp-logo.png)
+:::
+
+::: {.tool-info}
+[A user-friendly R Shiny app to analyze genomic data without command-line tools, supporting diploid and polyploid species]{.lead}
+:::
+:::
+
+## Overview
+
+BIGapp (Breeding Insight Genomics app) is a web application built with R and Shiny that simplifies the processing of low to mid-density genotyping data for both diploid and polyploid species. It provides an intuitive interface for researchers and breeders to analyze genomic data without requiring command-line expertise.
+
+## Key Features
+
+- **Web-Based Interface** — Access through your browser, no command-line needed
+- **Genotype Processing** — Call genotypes from read counts, filter SNPs and samples
+- **Summary Statistics** — SNP PIC, MAF, observed heterozygosity
+- **Population Structure** — PCA and DAPC analysis
+- **GWAS** — Genome-wide association studies via GWASpoly
+- **Genomic Selection** — Model accuracy estimation, predict breeding values
+- **Multi-ploidy Support** — Works with diploid and polyploid species
+
+## Links
+
+[Live Demo](https://big-demo.shinyapps.io/bigapp-main/) · [Tutorials](https://scribehow.com/page/BIGapp_Tutorials__FdLsY9ZxQsi6kgT9p-U2Zg) · [GitHub](https://github.com/Breeding-Insight/BIGapp) · [Report Issues](https://github.com/Breeding-Insight/BIGapp/issues)
+
+## Installation
+
+```r
+BiocManager::install("Breeding-Insight/BIGapp", dependencies = TRUE)
+BIGapp::run_app()
+```
+
+## Citation
+
+> Sandercock A.M., Peel M.D., Tanigut C.H., et al. (2025). BIGapp: A User-Friendly Genomic Tool Kit Identified Quantitative Trait Loci for Creeping Rootedness in Alfalfa. *The Plant Genome*. [DOI: 10.1002/tpg2.70067](https://doi.org/10.1002/tpg2.70067)
+
+## Funding
+
+BIGapp development is supported by [Breeding Insight](https://breedinginsight.org/), a USDA-funded initiative.

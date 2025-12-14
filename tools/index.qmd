@@ -1,0 +1,40 @@
+---
+title: "Tools & Software"
+subtitle: "Open-source bioinformatics tools for plant and animal breeding"
+listing:
+  - id: tools-listing
+    contents: "*.qmd"
+    type: grid
+    fields: [image, title, description, categories]
+    sort: "order"
+    filter-ui: true
+    categories: true
+    image-height: 80px
+    exclude:
+      title: "Tools & Software"
+---
+
+All tools are open-source and available on GitHub. Click on a tool for documentation, installation instructions, and examples.
+
+::: {#tools-listing}
+:::
+
+---
+ 
+## Quick Reference
+
+| Tool | Language | Status | Purpose | Install |
+|------|----------|--------|---------|---------|
+| [Binx](binx.qmd) | Rust | [Experimental]{.status-experimental} | Fast polyploid CLI | [GitHub Releases](https://github.com/alex-sandercock/Binx/releases) |
+| [BIGapp](bigapp.qmd) | R/Shiny | [Stable]{.status-stable} | Genomic analysis web app | `BiocManager::install("Breeding-Insight/BIGapp")` |
+| [BIGr](bigr.qmd) | R | [Stable]{.status-stable} | Core genomic functions | `install.packages("BIGr")` |
+| [castgen](castgen.qmd) | R | [Stable]{.status-stable} | Sample size estimation | `install.packages("castgen")` |
+| [SimpleSnek](simplesnek.qmd) | Python | [Active]{.status-active} | GATK variant calling | Clone from GitHub |
+
+## Requesting Features or Reporting Bugs
+
+Please open an issue on the relevant GitHub repository. When reporting bugs, include:
+
+1. A minimal reproducible example
+2. Your operating system and software versions
+3. The full error message

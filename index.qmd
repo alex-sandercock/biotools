@@ -1,0 +1,139 @@
+---
+title: "Bioinformatics Tools for Breeding Applications"
+subtitle: "Open-source software for plant and animal genomics"
+page-layout: full
+toc: false
+---
+
+::: {.column-screen-inset}
+<!-- Hero section -->
+::: {.hero-banner}
+
+# Bioinformatics Tools for Breeding Applications
+
+Open-source software designed to make genomic analysis more accessible for plant and animal breeding programs.
+
+[Explore Tools](tools/index.qmd){.btn .btn-primary .btn-lg} [View Tutorials](tutorials/index.qmd){.btn .btn-outline-primary .btn-lg}
+
+:::
+:::
+
+## About This Site
+
+This site provides bioinformatics tools, tutorials, and workshop materials for genomic applications in breeding. The tools span variant calling, population genetics, genomic selection, and data visualization — built in **R**, **Python**, and **Rust**.
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+### {{< fa toolbox >}} Tools
+
+Open-source software packages for genomic data analysis. Each tool includes documentation, installation guides, and example workflows.
+
+[Browse Tools →](tools/index.qmd)
+:::
+
+::: {.g-col-12 .g-col-md-4}
+### {{< fa book-open >}} Tutorials
+
+Step-by-step guides for common bioinformatics tasks. Learn at your own pace with code examples and sample data.
+
+[Start Learning →](tutorials/index.qmd)
+:::
+
+::: {.g-col-12 .g-col-md-4}
+### {{< fa chalkboard-teacher >}} Workshops
+
+Materials from hands-on workshops including setup instructions, slides, and exercises.
+
+[View Workshops →](workshops/index.qmd)
+:::
+
+:::
+
+---
+
+## Featured Tools
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card}
+::: {.card-header}
+**BIGapp** · R Shiny
+:::
+::: {.card-body}
+User-friendly web app for genomic analysis—GWAS, genomic selection, PCA, and more—without command-line tools. Supports diploid and polyploid species.
+
+```r
+BIGapp::run_app()
+```
+
+[Documentation](tools/bigapp.qmd) · [GitHub](https://github.com/Breeding-Insight/BIGapp) · [Live Demo](https://big-demo.shinyapps.io/bigapp-main/)
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card}
+::: {.card-header}
+**BIGr** · R Package (CRAN)
+:::
+::: {.card-body}
+Core genomic analysis functions for diploid and polyploid breeding programs. The computational backbone for BIGapp.
+
+```r
+install.packages("BIGr")
+```
+
+[Documentation](tools/bigr.qmd) · [GitHub](https://github.com/Breeding-Insight/BIGr) · [CRAN](https://cran.r-project.org/package=BIGr)
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card}
+::: {.card-header}
+**castgen** · R Package (CRAN)
+:::
+::: {.card-body}
+Estimate sample sizes needed to capture genetic diversity in breeding or conservation populations.
+
+```r
+install.packages("castgen")
+```
+
+[Documentation](tools/castgen.qmd) · [GitHub](https://github.com/alex-sandercock/castgen) · [CRAN](https://cran.r-project.org/package=castgen)
+:::
+:::
+:::
+
+::: {.g-col-12 .g-col-md-6}
+::: {.card}
+::: {.card-header}
+**Binx** · Rust CLI
+:::
+::: {.card-body}
+Fast command-line tool for polyploid and diploid genomic analysis, built in Rust for performance.
+
+[Download from GitHub Releases](https://github.com/alex-sandercock/Binx/releases)
+
+[Documentation](https://binx-docs.readthedocs.io) · [GitHub](https://github.com/alex-sandercock/Binx)
+:::
+:::
+:::
+
+:::
+
+---
+
+## Tool Publications
+
+> Sandercock A.M., Peel M.D., Taniguti C.H., et al. (2025). **BIGapp: A User-Friendly Genomic Tool Kit Identified Quantitative Trait Loci for Creeping Rootedness in Alfalfa.** *The Plant Genome*. [DOI: 10.1002/tpg2.70067](https://doi.org/10.1002/tpg2.70067)
+
+> Sandercock A.M., Westbrook J.W., Zhang Q., Holliday J.A. (2024). **A genome-guided strategy for climate resilience in American chestnut restoration populations.** *PNAS* 121(30) e2403505121. [DOI: 10.1073/pnas.2403505121](https://doi.org/10.1073/pnas.2403505121)
+
+---
+
+## Contact & Collaboration
+
+Questions about the tools or interested in collaborating? [Get in touch](about.qmd#contact) or open an issue on the relevant GitHub repository.

@@ -1,0 +1,89 @@
+---
+title: "Introduction to BIGapp for Plant Breeding"
+subtitle: "Workshop Materials"
+---
+
+Welcome! This hands-on workshop introduces **BIGapp** — a free, web-based tool for analyzing genomic data in plant breeding programs. No coding required.
+
+## Who Is This For?
+
+This workshop is designed for:
+
+- Undergraduate and graduate students in plant sciences
+- Researchers working with genomic data in breeding programs
+- Anyone interested in applying genomics to crop improvement
+
+**No prior experience with R or bioinformatics is required.** BIGapp provides a point-and-click interface for analyses that traditionally require programming skills.
+
+## What You'll Learn
+
+By the end of this workshop, you'll understand:
+
+1. **Why genomic data matters** for breeding decisions
+2. **How to filter and quality-check** your genotyping data
+3. **What population structure is** and how to visualize it with PCA
+4. **How GWAS works** to find markers associated with traits
+
+More importantly, you'll be able to do all of this yourself using BIGapp.
+
+## Workshop Overview
+
+**Duration:** 2 hours
+
+**Format:** Live demonstration + hands-on practice
+
+## Schedule
+
+| Time | Topic |
+|------|-------|
+| 0:00 - 0:10 | Welcome & Setup Check |
+| 0:10 - 0:25 | [Why Genomics in Breeding?](module-01.qmd#why-genomics) — The big picture |
+| 0:25 - 0:50 | [Module 1: Data Import & Quality Control](module-01.qmd) |
+| 0:50 - 1:00 | *Short Break* |
+| 1:00 - 1:25 | [Module 2: Population Structure & PCA](module-02.qmd) |
+| 1:25 - 1:55 | [Module 3: GWAS](module-03.qmd) — Finding marker-trait associations |
+| 1:55 - 2:00 | Wrap-up & Questions |
+
+::: {.callout-note}
+## Extra Material
+If you finish early or want to continue learning after the workshop, check out [Module 4: Genomic Selection](module-04.qmd) — predicting breeding values from markers.
+:::
+
+## Before the Workshop
+
+::: {.callout-important}
+## No installation required!
+We'll use the **online version** of BIGapp, so you just need a web browser and internet connection.
+
+**Bookmark this link:** [big-demo.shinyapps.io/bigapp-main](https://big-demo.shinyapps.io/bigapp-main/)
+:::
+
+If you'd like to install BIGapp locally for use after the workshop, see the [Setup Instructions](setup.qmd).
+
+## Materials
+
+| Resource | Description |
+|----------|-------------|
+| [Setup Instructions](setup.qmd) | Optional local installation guide |
+| [Module 1: Data & QC](module-01.qmd) | Import data, filter SNPs and samples |
+| [Module 2: Population Structure](module-02.qmd) | Understand and run PCA |
+| [Module 3: GWAS](module-03.qmd) | Find marker-trait associations |
+| [Module 4: Genomic Selection](module-04.qmd) | *(Optional)* Predict breeding values |
+| [Cheat Sheet](../../files/bigapp-cheatsheet.pdf) | Quick reference guide |
+
+## Sample Data
+
+We'll use example datasets built into BIGapp, so you don't need to download anything. After the workshop, you can try the same analyses with your own data!
+
+## Questions?
+
+- **During the workshop:** Raise your hand or type in the chat
+- **After the workshop:** [Open an issue on GitHub](https://github.com/Breeding-Insight/BIGapp/issues) or [email me](mailto:aherranssanderco@ufl.edu)
+
+---
+
+## Additional Resources
+
+New to genomics in plant breeding? These resources provide more background:
+
+- [BIGapp Tutorials on Scribehow](https://scribehow.com/page/BIGapp_Tutorials__FdLsY9ZxQsi6kgT9p-U2Zg) — Step-by-step guides with screenshots
