@@ -98,28 +98,72 @@ The numbers represent **dosage** — how many copies of the alternate allele:
 For polyploid crops (potato, blueberry, alfalfa, etc.), dosage can be higher: 0, 1, 2, 3, 4 for a tetraploid.
 :::
 
-### Demo: Loading Example Data
+### What is a VCF File?
 
-Let's load the built-in example data:
+**VCF (Variant Call Format)** is the standard file format for storing genetic variation data. When you get genotyping results back from a sequencing facility, they're usually in VCF format.
 
-![Loading example data](../../images/bigapp-load-data.gif){fig-alt="Animated GIF showing how to load example data in BIGapp"}
+A VCF file has two main parts:
+
+**1. Header lines** (start with `#`) — metadata about the file:
+```
+##fileformat=VCFv4.2
+##reference=Cmaxima_HZAU_T2T
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+#CHROM  POS     ID      REF  ALT  QUAL  FILTER  INFO  FORMAT  Sample1  Sample2  Sample3
+```
+
+**2. Data lines** — one row per SNP, with genotypes for each sample:
+```
+Chr01   1234567   SNP_001   A    G    .     PASS    .     GT:DP:AD    0/0:25:25,0   0/1:30:15,15   1/1:28:0,28
+```
+
+### The GT Field: Genotypes to Dosage
+
+The **GT (Genotype)** field shows which alleles each sample has:
+
+| GT Value | Meaning | Dosage |
+|----------|---------|--------|
+| `0/0` | Homozygous reference (e.g., AA) | 0 |
+| `0/1` | Heterozygous (e.g., AG) | 1 |
+| `1/1` | Homozygous alternate (e.g., GG) | 2 |
+
+::: {.callout-tip}
+## Connecting VCF to the dosage matrix
+Remember the dosage table above? BIGapp converts VCF genotypes to dosage automatically. A `0/1` in the VCF becomes a `1` in the dosage matrix.
+:::
+
+Other common FORMAT fields you might see:
+
+- **DP** — Read depth (how many times this position was sequenced)
+- **AD** — Allelic depth (reads supporting each allele, e.g., `15,15` means 15 reads for REF, 15 for ALT)
+
+For this workshop, BIGapp handles the VCF parsing — you just upload the file!
+
+---
+
+### Demo: Loading the Workshop Data
+
+Let's load the Atlantic Giant Pumpkin dataset:
+
+![Loading example data](../../images/bigapp-load-data.gif){fig-alt="Animated GIF showing how to load data in BIGapp"}
 
 **Steps:**
 
 1. Click **"Dosage File Upload"** in the sidebar
-2. Under "Example Data", select **"Tetraploid Potato"** (or another example)
-3. Click **Load Data**
-4. You should see a confirmation with the number of samples and markers loaded
+2. Click **"Browse"** and select the VCF file you downloaded (`atlantic_giant_pumpkin_diversity.vcf.gz`)
+3. Set **Ploidy** to **2** (pumpkin is diploid)
+4. Click **Load Data**
+5. You should see a confirmation with the number of samples and markers loaded
 
 ### Try It Yourself
 
-Load the example data now. You should see something like:
+Load the pumpkin VCF file now. You should see something like:
 
 ```
 ✓ Data loaded successfully
   Samples: 200
-  Markers: 5,000
-  Ploidy: 4
+  Markers: 1,200
+  Ploidy: 2
 ```
 
 ---
@@ -173,10 +217,10 @@ Watch how to apply quality filters:
 ### Try It Yourself
 
 1. Apply MAF filter of 0.05
-2. Apply missing rate filter of 0.20
+2. Apply missing rate filter of 0.50 (50%)
 3. How many SNPs remain after filtering?
 
-You should see the number of markers decrease — this is expected! We're removing low-quality data.
+You should see the number of markers decrease from 1,200 to approximately **1,000**. The pumpkin dataset includes ~100 low-MAF SNPs and ~100 high-missing SNPs specifically for this QC demonstration!
 
 ---
 
@@ -203,16 +247,16 @@ This shows how heterozygous each sample is. Look for:
 
 ## Exercise
 
-Using the example data:
+Using the pumpkin dataset:
 
-1. Load the data
-2. Apply filters: MAF > 0.05, missing rate < 0.20
+1. Load the VCF file
+2. Apply filters: MAF > 0.05, missing rate < 0.50
 3. Check the summary statistics
 4. **Question:** What percentage of markers were removed by filtering?
 
 ::: {.callout-tip collapse="true"}
-## Hint
-Compare the number of markers before and after filtering. The difference, divided by the original number, gives you the percentage removed.
+## Answer
+Starting with 1,200 markers, after filtering you should have ~1,000 remaining. That's about **17%** removed (200 ÷ 1,200 = 0.167).
 :::
 
 ---

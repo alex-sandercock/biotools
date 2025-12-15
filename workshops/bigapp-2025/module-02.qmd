@@ -80,9 +80,11 @@ BIGapp gives you:
 
 ### Try It Yourself
 
-1. Run PCA on your filtered data
+1. Run PCA on your filtered pumpkin data
 2. Look at the plot — do you see distinct clusters?
 3. Check the variance explained — how much does PC1 capture?
+
+With the pumpkin dataset, you should see **three overlapping clusters** corresponding to the Eastern, Midwest, and Western US breeding regions. The clusters overlap because there's been gene flow between regions — this is realistic for most breeding populations!
 
 ---
 
@@ -133,9 +135,14 @@ This helps you see if genetic structure matches your expectations.
 
 **Steps:**
 
-1. Upload a metadata file with group labels
-2. In the PCA section, select the grouping variable
-3. The plot updates with colors
+1. Upload the phenotype file (`atlantic_giant_pumpkin_diversity_phenotypes.csv`)
+2. In the PCA section, select **Region** as the grouping variable
+3. The plot updates with colors — you should see Eastern, Midwest, and Western clusters!
+
+::: {.callout-tip}
+## Try different groupings
+Color by **State** to see a finer geographic gradient, or by **Breeding_Program** to see how programs cluster genetically.
+:::
 
 ---
 
@@ -166,15 +173,18 @@ BIGapp includes DAPC in the same section as PCA.
 
 ## Exercise
 
-Using your filtered data:
+Using your filtered pumpkin data:
 
 1. Run PCA
 2. How many distinct clusters do you see?
 3. What percentage of variance does PC1 explain? PC2?
 4. Are there any outliers?
+5. Color by **Region** — does genetic structure match geographic origin?
 
-If you have metadata:
-5. Color by group — does genetic structure match?
+::: {.callout-tip collapse="true"}
+## Expected Results
+You should see three overlapping clusters that align with the Eastern, Midwest, and Western regions. PC1 typically captures 5-10% of variance in diverse breeding populations. If you color by State, you'll see a geographic gradient within each regional cluster.
+:::
 
 ---
 

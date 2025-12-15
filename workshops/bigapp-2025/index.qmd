@@ -69,11 +69,23 @@ If you'd like to install BIGapp locally for use after the workshop, see the [Set
 | [Module 2: Population Structure](module-02.qmd) | Understand and run PCA |
 | [Module 3: GWAS](module-03.qmd) | Find marker-trait associations |
 | [Module 4: Genomic Selection](module-04.qmd) | *(Optional)* Predict breeding values |
-| [Cheat Sheet](../../files/bigapp-cheatsheet.pdf) | Quick reference guide |
 
-## Sample Data
+## Workshop Data
 
-We'll use example datasets built into BIGapp, so you don't need to download anything. After the workshop, you can try the same analyses with your own data!
+We'll use a simulated **Atlantic Giant Pumpkin diversity panel** — 200 samples from breeding programs across the US, with 1,200 SNPs.
+
+Download these files before the workshop:
+
+| File | Description |
+|------|-------------|
+| [Genotype VCF](https://raw.githubusercontent.com/alex-sandercock/biotools/main/data/Cmaxima_sim_diversity_panel/atlantic_giant_pumpkin_diversity.vcf.gz) | Genotype data (3 MB) |
+| [Phenotypes CSV](https://raw.githubusercontent.com/alex-sandercock/biotools/main/data/Cmaxima_sim_diversity_panel/atlantic_giant_pumpkin_diversity_phenotypes.csv) | Sample info + fruit weight trait |
+| [Dataset README](https://github.com/alex-sandercock/biotools/blob/main/data/Cmaxima_sim_diversity_panel/README_diversity_panel.md) | Full dataset documentation |
+
+::: {.callout-tip}
+## Why pumpkins?
+This dataset simulates realistic GWAS scenarios: population structure from geographic regions (Eastern, Midwest, Western US) and a QTL for fruit weight on Chromosome 4.
+:::
 
 ## Questions?
 
