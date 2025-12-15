@@ -87,10 +87,11 @@ BIGapp handles this automatically — the GWAS tab calculates principal componen
 **Steps:**
 
 1. Go to **"GWAS"** in the sidebar
-2. Upload or select your phenotype file
-3. Select the trait to analyze
-4. Set your significance threshold
-5. Click **Run GWAS**
+2. Upload your VCF file (`atlantic_giant_pumpkin_diversity.vcf.gz`)
+3. Upload your phenotype file (`atlantic_giant_pumpkin_diversity_phenotypes.csv`)
+4. Select the trait to analyze
+5. Set your significance threshold
+6. Click **Run GWAS**
 
 BIGapp will automatically determine the optimal number of PCs using BIC — you can view the BIC plot in the results tabs.
 
@@ -105,7 +106,10 @@ Using the pumpkin data:
 5. Check the BIC plot to see how many PCs were automatically selected
 6. Look at the Manhattan plot — do you see any significant peaks?
 
-With the pumpkin dataset, you should see a **clear peak on Chromosome 4** with multiple significant SNPs!
+::: {.callout-tip collapse="true"}
+## Answer
+With the pumpkin dataset, you should see a **clear peak on Chromosome 4** with multiple significant SNPs! This represents a QTL for fruit weight.
+:::
 
 ---
 
@@ -247,7 +251,7 @@ Using the pumpkin data:
    - How close together are they?
 
 ::: {.callout-tip collapse="true"}
-## Expected Results
+## Answer
 You should see **one clear peak on Chromosome 4** with 3 significant SNPs within ~858 kb of each other. The QQ plot should show points following the diagonal with deviation only at the tail (true associations). This represents a single QTL for fruit weight — the simulated causal variant (SNP_0240) adds ~150 lbs per alternate allele!
 :::
 
