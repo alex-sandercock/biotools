@@ -96,13 +96,16 @@ BIGapp will automatically determine the optimal number of PCs using BIC — you 
 
 ### Try It Yourself
 
-Using the example data:
+Using the pumpkin data:
 
 1. Navigate to the GWAS section
-2. Select a trait from the example phenotypes
-3. Run the analysis
-4. Check the BIC plot to see how many PCs were automatically selected
-5. Look at the Manhattan plot — do you see any significant peaks?
+2. Upload the phenotype file if not already loaded
+3. Select **Fruit_Weight_lbs** as the trait
+4. Run the analysis
+5. Check the BIC plot to see how many PCs were automatically selected
+6. Look at the Manhattan plot — do you see any significant peaks?
+
+With the pumpkin dataset, you should see a **clear peak on Chromosome 4** with multiple significant SNPs!
 
 ---
 
@@ -138,6 +141,29 @@ Markers above the threshold line are your "hits." For each significant marker, y
 ⚠️ Inconsistent across analyses
 
 ⚠️ Too many significant markers (check population structure correction)
+
+### Understanding the Chromosome 4 Peak
+
+In the pumpkin data, you'll notice **3 significant SNPs** clustered together on Chromosome 4. Does this mean there are 3 QTLs?
+
+**No! This is linkage disequilibrium (LD) in action.**
+
+| SNP | Distance from peak | Why it's significant |
+|-----|-------------------|---------------------|
+| SNP_0240 | 0 kb (the peak) | This is likely the **causal variant** |
+| SNP_0239 | ~479 kb away | Significant due to LD with the causal SNP |
+| SNP_0238 | ~858 kb away | Also in LD with the causal SNP |
+
+::: {.callout-important}
+## Key Lesson
+Multiple significant SNPs in the same region usually represent **ONE QTL**, not multiple independent effects. The other SNPs are just "hitchhiking" because they're correlated with the causal variant.
+:::
+
+**What would you do next?**
+
+1. **LD pruning/clumping** — Keep only one SNP per LD block
+2. **Fine-mapping** — Use additional methods to pinpoint the causal variant
+3. **Check the SNP info file** — In this simulated dataset, we know SNP_0240 is the true causal variant!
 
 ---
 
@@ -207,22 +233,28 @@ GWAS finds **associations**, not necessarily **causal variants**:
 
 ## Exercise
 
-Using the example data:
+Using the pumpkin data:
 
-1. Run GWAS for one trait
+1. Run GWAS for **Fruit_Weight_lbs**
 2. Examine the Manhattan plot:
    - How many significant peaks do you see?
-   - Which chromosome(s) have the strongest associations?
+   - Which chromosome has the strongest association?
 3. Check the QQ plot:
    - Does it look well-calibrated?
    - Is there evidence of inflation?
-4. Look at the top hits:
-   - What are the effect sizes?
-   - What are the MAFs?
+4. Look at the Chromosome 4 hits:
+   - How many significant SNPs are there?
+   - How close together are they?
+
+::: {.callout-tip collapse="true"}
+## Expected Results
+You should see **one clear peak on Chromosome 4** with 3 significant SNPs within ~858 kb of each other. The QQ plot should show points following the diagonal with deviation only at the tail (true associations). This represents a single QTL for fruit weight — the simulated causal variant (SNP_0240) adds ~150 lbs per alternate allele!
+:::
 
 **Discussion:**
-- Would you trust these results for marker-assisted selection?
-- What additional validation would you want?
+- Why do 3 significant SNPs represent only 1 QTL?
+- How would you narrow down which SNP is causal?
+- What would you do before using these markers in a breeding program?
 
 ---
 

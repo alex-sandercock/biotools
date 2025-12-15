@@ -27,8 +27,12 @@ Start with [Tutorial 1: Introduction](tutorial-01-intro.qmd) which covers the ba
 
 Sample datasets for these tutorials can be downloaded here:
 
-- [sample_data.vcf.gz](files/sample_data.vcf.gz) (5 MB) — Example VCF file
-- [sample_metadata.csv](files/sample_metadata.csv) (10 KB) — Sample information
+**Atlantic Giant Pumpkin Diversity Panel** — A simulated GWAS dataset with 200 samples and 1,200 SNPs:
+
+- [atlantic_giant_pumpkin_diversity.vcf.gz](https://raw.githubusercontent.com/alex-sandercock/biotools/main/data/Cmaxima_sim_diversity_panel/atlantic_giant_pumpkin_diversity.vcf.gz) (3 MB) — Genotype data in VCF format
+- [atlantic_giant_pumpkin_diversity_phenotypes.csv](https://raw.githubusercontent.com/alex-sandercock/biotools/main/data/Cmaxima_sim_diversity_panel/atlantic_giant_pumpkin_diversity_phenotypes.csv) (20 KB) — Sample metadata and phenotypes
+- [atlantic_giant_pumpkin_diversity_snp_info.csv](https://raw.githubusercontent.com/alex-sandercock/biotools/main/data/Cmaxima_sim_diversity_panel/atlantic_giant_pumpkin_diversity_snp_info.csv) (75 KB) — SNP details and annotations
+- [README](https://github.com/alex-sandercock/biotools/blob/main/data/Cmaxima_sim_diversity_panel/README_diversity_panel.md) — Dataset documentation
 
 Or load directly in R:
 
