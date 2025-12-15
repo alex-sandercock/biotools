@@ -157,14 +157,12 @@ Let's load the Atlantic Giant Pumpkin dataset:
 
 ### Try It Yourself
 
-Load the pumpkin VCF file now. You should see something like:
+Load the pumpkin VCF file now.
 
-```
-✓ Data loaded successfully
-  Samples: 200
-  Markers: 1,200
-  Ploidy: 2
-```
+::: {.callout-tip collapse="true"}
+## Answer
+You should see the loading bar fill in the **Load VCF Data** field. Once complete, the data is ready for use in other BIGapp modules.
+:::
 
 ---
 
@@ -220,7 +218,10 @@ Watch how to apply quality filters:
 2. Apply missing rate filter of 0.50 (50%)
 3. How many SNPs remain after filtering?
 
+::: {.callout-tip collapse="true"}
+## Answer
 You should see the number of markers decrease from 1,200 to approximately **1,000**. The pumpkin dataset includes ~100 low-MAF SNPs and ~100 high-missing SNPs specifically for this QC demonstration!
+:::
 
 ---
 

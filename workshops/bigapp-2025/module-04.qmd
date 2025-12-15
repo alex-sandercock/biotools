@@ -131,9 +131,9 @@ Plant_003,132.1,78.5,38
 **Steps:**
 
 1. Go to **"Genomic Prediction"** in the sidebar
-2. Upload your phenotype file
-3. Select the trait to predict
-4. Choose the model (rrBLUP is a good default)
+2. Upload your VCF file (`atlantic_giant_pumpkin_diversity.vcf.gz`)
+3. Upload your phenotype file (`atlantic_giant_pumpkin_diversity_phenotypes.csv`)
+4. Select the trait to predict
 5. Click **Run Prediction**
 
 ### Understanding the Output
@@ -161,10 +161,14 @@ BIGapp does this automatically and reports the average accuracy.
 
 ### Try It Yourself
 
-1. Load the example data with phenotypes
-2. Run genomic prediction for a trait
+1. Load the pumpkin data with phenotypes
+2. Run genomic prediction for **Fruit_Weight_lbs**
 3. What accuracy do you get?
-4. Try different models — does accuracy change?
+
+::: {.callout-tip collapse="true"}
+## Answer
+With the pumpkin dataset, you should see cross-validation accuracy around **0.5-0.7** for fruit weight. This is typical for a quantitative trait with moderate heritability.
+:::
 
 ---
 
@@ -203,20 +207,6 @@ Even moderate accuracy (0.5-0.6) can dramatically improve selection efficiency b
 
 ---
 
-## Choosing a Model
-
-BIGapp offers several prediction models:
-
-| Model | Best for | Notes |
-|-------|----------|-------|
-| **rrBLUP** | Most situations | Fast, assumes many small QTL |
-| **GBLUP** | When you have relationship matrix | Uses genomic relationships |
-| **Bayesian** | Large-effect QTL | Slower, more flexible |
-
-**Recommendation:** Start with rrBLUP. It works well for most traits in most crops.
-
----
-
 ## Practical Considerations
 
 ### Training Population Design
@@ -252,17 +242,22 @@ Your training set should:
 
 ## Exercise
 
-Using the example data:
+Using the pumpkin data:
 
-1. Load phenotype data
-2. Run genomic prediction for one trait
+1. Load the phenotype data
+2. Run genomic prediction for **Fruit_Weight_lbs**
 3. Note the cross-validation accuracy
 4. Identify the top 10 individuals by GEBV
-5. Run prediction for a different trait — is accuracy similar?
+5. Look at which regions these top individuals come from
+
+::: {.callout-tip collapse="true"}
+## Answer
+You should see accuracy around 0.5-0.7. The top-ranked individuals by GEBV will likely be from the **Eastern** region, which has the highest average fruit weights in the dataset. This makes biological sense — Eastern breeding programs have historically focused on giant pumpkin competitions!
+:::
 
 **Discussion questions:**
 
-- Would you use GS for this trait in your program?
+- Would you use GS for fruit weight in your program?
 - What accuracy would you need to make GS worthwhile?
 - How could you improve accuracy?
 
@@ -277,8 +272,6 @@ Using the example data:
 ✅ Cross-validation estimates prediction accuracy
 
 ✅ Even moderate accuracy enables selection among many candidates
-
-✅ rrBLUP is a good default model for most situations
 
 ✅ Training population design matters!
 

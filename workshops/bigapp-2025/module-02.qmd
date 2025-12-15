@@ -65,8 +65,8 @@ Watch how to run PCA:
 
 **Steps:**
 
-1. Make sure you have filtered data loaded
-2. Go to **"PCA"** in the sidebar
+1. Go to **"PCA"** in the sidebar
+2. Upload your VCF file (`atlantic_giant_pumpkin_diversity.vcf.gz`)
 3. Click **Run PCA**
 4. Explore the interactive plot
 
@@ -84,7 +84,10 @@ BIGapp gives you:
 2. Look at the plot — do you see distinct clusters?
 3. Check the variance explained — how much does PC1 capture?
 
+::: {.callout-tip collapse="true"}
+## Answer
 With the pumpkin dataset, you should see **three overlapping clusters** corresponding to the Eastern, Midwest, and Western US breeding regions. The clusters overlap because there's been gene flow between regions — this is realistic for most breeding populations!
+:::
 
 ---
 
@@ -182,7 +185,7 @@ Using your filtered pumpkin data:
 5. Color by **Region** — does genetic structure match geographic origin?
 
 ::: {.callout-tip collapse="true"}
-## Expected Results
+## Answer
 You should see three overlapping clusters that align with the Eastern, Midwest, and Western regions. PC1 typically captures 5-10% of variance in diverse breeding populations. If you color by State, you'll see a geographic gradient within each regional cluster.
 :::
 
