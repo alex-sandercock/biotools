@@ -31,7 +31,9 @@ With genomic selection:
 2. Train a prediction model on individuals with **both** genotypes and phenotypes
 3. Use the model to predict breeding values for individuals with **only** genotypes
 
-![Genomic selection concept](../../images/gs-concept.png){fig-alt="Diagram showing genomic selection workflow: training set with genotypes and phenotypes, prediction for genotyped-only individuals"}
+![Genomic selection concept](../../images/gs-concept.jpg){fig-alt="Diagram showing genomic selection workflow: training set with genotypes and phenotypes, prediction for genotyped-only individuals"}
+
+*Figure: [Escamilla et al. (2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12127607/), CC BY-NC-ND*
 
 ::: {.callout-tip}
 ## The key insight
@@ -156,6 +158,8 @@ Since we don't know the "true" breeding values, we estimate accuracy using **cro
 4. **Calculate** correlation between predicted and observed
 
 ![Cross-validation diagram](../../images/cross-validation.png){fig-alt="Diagram showing 5-fold cross-validation process"}
+
+*Figure: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:K-fold_cross_validation_EN.svg), CC BY-SA 4.0*
 
 BIGapp does this automatically and reports the average accuracy.
 

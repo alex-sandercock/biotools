@@ -79,8 +79,25 @@ Download these files before the workshop:
 | File | Description |
 |------|-------------|
 | [Genotype VCF](https://raw.githubusercontent.com/alex-sandercock/biotools/main/data/Cmaxima_sim_diversity_panel/atlantic_giant_pumpkin_diversity.vcf.gz) | Genotype data (3 MB) |
-| [Phenotypes CSV](https://raw.githubusercontent.com/alex-sandercock/biotools/main/data/Cmaxima_sim_diversity_panel/atlantic_giant_pumpkin_diversity_phenotypes.csv) | Sample info + fruit weight trait |
+| <a href="#" onclick="downloadFile('https://raw.githubusercontent.com/alex-sandercock/biotools/main/data/Cmaxima_sim_diversity_panel/atlantic_giant_pumpkin_diversity_phenotypes.csv', 'atlantic_giant_pumpkin_diversity_phenotypes.csv'); return false;">Phenotypes CSV</a> | Sample info + fruit weight trait |
 | [Dataset README](https://github.com/alex-sandercock/biotools/blob/main/data/Cmaxima_sim_diversity_panel/README_diversity_panel.md) | Full dataset documentation |
+
+```{=html}
+<script>
+function downloadFile(url, filename) {
+  fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    })
+    .catch(err => console.error('Download failed:', err));
+}
+</script>
+```
 
 ::: {.callout-tip}
 ## Why pumpkins?

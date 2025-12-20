@@ -141,27 +141,50 @@ For this workshop, BIGapp handles the VCF parsing — you just upload the file!
 
 ---
 
-### Demo: Loading the Workshop Data
+### How Data Loading Works in BIGapp
 
-Let's load the Atlantic Giant Pumpkin dataset:
+Unlike some tools with a central data loading area, **each BIGapp module has its own file upload section**. This means you'll upload your VCF and phenotype files within each analysis module as needed.
 
-![Loading example data](../../images/bigapp-load-data.gif){fig-alt="Animated GIF showing how to load data in BIGapp"}
+![Loading data in BIGapp](../../images/bigapp-load-data.gif){fig-alt="Animated GIF showing how to load data in BIGapp"}
 
-**Steps:**
+#### Uploading a VCF File
 
-1. Click **"Dosage File Upload"** in the sidebar
-2. Click **"Browse"** and select the VCF file you downloaded (`atlantic_giant_pumpkin_diversity.vcf.gz`)
-3. Set **Ploidy** to **2** (pumpkin is diploid)
-4. Click **Load Data**
-5. You should see a confirmation with the number of samples and markers loaded
+When you open an analysis module (like VCF Filtering), you'll see a **"Choose VCF File"** input:
+
+1. Click the **"Browse..."** button
+2. Select your VCF file from the file picker (`atlantic_giant_pumpkin_diversity.vcf.gz`)
+3. Click **Open**
+4. Wait for the **"Upload complete"** message to appear below the input
+
+#### Uploading a Phenotype/Trait File
+
+When you upload a phenotype CSV file, a **Trait File Options** modal will appear:
+
+1. Click **"Browse..."** next to the trait file input
+2. Select your phenotype CSV file (`atlantic_giant_pumpkin_diversity_phenotypes.csv`)
+3. Click **Open**
+4. In the modal that appears:
+   - **Missing Data Value**: Select how missing data is coded in your file (typically `NA`)
+   - **Sample ID Column**: Choose which column contains sample identifiers (select `Sample_ID`)
+   - Review the **File Preview** to verify your data looks correct
+5. Click **Save** to confirm
+
+::: {.callout-note}
+## File Preview
+The modal shows the first 5 rows of your data so you can verify the columns are being read correctly before proceeding.
+:::
 
 ### Try It Yourself
 
-Load the pumpkin VCF file now.
+Let's practice by loading data in the VCF Filtering module:
+
+1. Go to **VCF Filtering** in the sidebar
+2. Upload the pumpkin VCF file using the steps above
+3. Verify you see "Upload complete"
 
 ::: {.callout-tip collapse="true"}
 ## Answer
-You should see the loading bar fill in the **Load VCF Data** field. Once complete, the data is ready for use in other BIGapp modules.
+Once you see "Upload complete" beneath the file input, your VCF is loaded and ready for filtering. The histogram on the right will populate once you run the filtering step.
 :::
 
 ---
