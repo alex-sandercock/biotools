@@ -40,13 +40,13 @@ Imagine you have 5,000 SNPs. Each sample can be thought of as a point in 5,000-d
 
 PCA finds the **main axes of variation** and projects everything down to 2 or 3 dimensions while preserving as much of the structure as possible.
 
-![PCA concept diagram](../../images/pca-concept.png){fig-alt="Diagram showing how PCA reduces dimensions while preserving structure"}
+![PCA concept diagram](../../images/pca-concept.png){fig-alt="Diagram showing how PCA reduces dimensions while preserving structure" width="80%"}
 
 ### Reading a PCA Plot
 
 Each dot is one sample. Samples close together are **genetically similar**.
 
-![Example PCA plot](../../images/pca-example.png){fig-alt="PCA plot showing two distinct clusters of samples"}
+![Example PCA plot](../../images/pca-example.png){fig-alt="PCA plot showing two distinct clusters of samples" width="70%"}
 
 In this example:
 - Two clear clusters → likely two genetic groups
@@ -61,7 +61,7 @@ In this example:
 
 Watch how to run PCA:
 
-![Running PCA in BIGapp](../../images/bigapp-pca.gif){fig-alt="Animated GIF showing the PCA workflow in BIGapp"}
+![Running PCA in BIGapp](../../images/bigapp-pca.gif){fig-alt="Animated GIF showing the PCA workflow in BIGapp" width="100%"}
 
 **Steps:**
 
@@ -95,7 +95,7 @@ With the pumpkin dataset, you should see **three overlapping clusters** correspo
 
 ### Scenario 1: Clear Clusters
 
-![PCA with clear clusters](../../images/pca-clusters.png){fig-alt="PCA showing distinct population clusters"}
+![PCA with clear clusters](../../images/pca-clusters.png){fig-alt="PCA showing distinct population clusters" width="70%"}
 
 **What it means:** Your data contains distinct genetic groups.
 
@@ -106,7 +106,7 @@ With the pumpkin dataset, you should see **three overlapping clusters** correspo
 
 ### Scenario 2: Continuous Variation
 
-![PCA with continuous variation](../../images/pca-continuous.png){fig-alt="PCA showing continuous spread without distinct clusters"}
+![PCA with continuous variation](../../images/pca-continuous.png){fig-alt="PCA showing continuous spread without distinct clusters" width="70%"}
 
 **What it means:** No strong substructure — samples vary along a gradient.
 
@@ -116,7 +116,7 @@ With the pumpkin dataset, you should see **three overlapping clusters** correspo
 
 ### Scenario 3: Outliers
 
-![PCA with outliers](../../images/pca-outliers.png){fig-alt="PCA showing main cluster with outlier samples"}
+![PCA with outliers](../../images/pca-outliers.png){fig-alt="PCA showing main cluster with outlier samples" width="70%"}
 
 **What it means:** Some samples are very different from the rest.
 
@@ -132,7 +132,7 @@ With the pumpkin dataset, you should see **three overlapping clusters** correspo
 
 If you have metadata (population, breeding program, location), you can color the PCA:
 
-![PCA colored by population](../../images/bigapp-pca-colored.gif){fig-alt="Animated GIF showing how to color PCA by metadata"}
+![PCA colored by population](../../images/bigapp-pca-colored.gif){fig-alt="Animated GIF showing how to color PCA by metadata" width="100%"}
 
 This helps you see if genetic structure matches your expectations.
 
@@ -153,7 +153,7 @@ Color by **State** to see a finer geographic gradient, or by **Breeding_Program*
 
 Look at the **scree plot** — it shows how much variance each PC explains.
 
-![Scree plot example](../../images/scree-plot.png){fig-alt="Scree plot showing variance explained by each PC"}
+![Scree plot example](../../images/scree-plot.png){fig-alt="Scree plot showing variance explained by each PC" width="70%"}
 
 **Rule of thumb:** Keep PCs until the curve levels off (the "elbow"). Often this is 3-10 PCs.
 

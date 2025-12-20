@@ -56,13 +56,13 @@ Go to: **[big-demo.shinyapps.io/bigapp-main](https://big-demo.shinyapps.io/bigap
 
 You should see the BIGapp welcome screen:
 
-![BIGapp welcome screen](../../images/bigapp-welcome.png){fig-alt="Screenshot of BIGapp welcome page"}
+![BIGapp welcome screen](../../images/bigapp-welcome.png){fig-alt="Screenshot of BIGapp welcome page" width="80%"}
 
 ### The Interface
 
 BIGapp is organized into sections in the left sidebar:
 
-![BIGapp navigation](../../images/bigapp-nav.gif){fig-alt="Animated GIF showing the sidebar navigation"}
+![BIGapp navigation](../../images/bigapp-nav.gif){fig-alt="Animated GIF showing the sidebar navigation" width="100%"}
 
 | Section | What it does |
 |---------|--------------|
@@ -145,7 +145,7 @@ For this workshop, BIGapp handles the VCF parsing — you just upload the file!
 
 Unlike some tools with a central data loading area, **each BIGapp module has its own file upload section**. This means you'll upload your VCF and phenotype files within each analysis module as needed.
 
-![Loading data in BIGapp](../../images/bigapp-load-data.gif){fig-alt="Animated GIF showing how to load data in BIGapp"}
+![Loading data in BIGapp](../../images/bigapp-load-data.gif){fig-alt="Animated GIF showing how to load data in BIGapp" width="100%"}
 
 #### Uploading a VCF File
 
@@ -225,7 +225,7 @@ A SNP where 99% of individuals have the same allele doesn't tell us much — the
 
 Watch how to apply quality filters:
 
-![Applying filters in BIGapp](../../images/bigapp-filtering.gif){fig-alt="Animated GIF showing the filtering interface"}
+![Applying filters in BIGapp](../../images/bigapp-filtering.gif){fig-alt="Animated GIF showing the filtering interface" width="100%"}
 
 **Steps:**
 
@@ -256,7 +256,7 @@ After filtering, let's look at what we have.
 
 Go to **Summary Stats** → **MAF Distribution**
 
-![MAF distribution plot](../../images/bigapp-maf-dist.png){fig-alt="Histogram showing MAF distribution after filtering"}
+![MAF distribution plot](../../images/bigapp-maf-dist.png){fig-alt="Histogram showing MAF distribution after filtering" width="80%"}
 
 A healthy MAF distribution should be relatively flat — if it's highly skewed toward low values, you may need stricter filtering.
 
