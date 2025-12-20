@@ -25,9 +25,9 @@ GWAS tests each marker individually:
 3. **Statistical test** — Is the difference significant?
 4. **Repeat** for every marker
 
-![GWAS concept](../../images/gwas-concept.png){fig-alt="Diagram showing how GWAS tests for association between marker genotypes and phenotype"}
+![GWAS concept](../../images/gwas-concept.png){fig-alt="Diagram showing how GWAS tests for association between marker genotypes and phenotype" width="80%"}
 
-If individuals with allele "A" consistently have higher yield than those with allele "B", that marker is **associated** with yield.
+If individuals with allele "B" consistently have higher yield than those with allele "A", that marker is **associated** with yield.
 
 ---
 
@@ -35,7 +35,7 @@ If individuals with allele "A" consistently have higher yield than those with al
 
 GWAS results are typically shown as a **Manhattan plot**:
 
-![Manhattan plot example](../../images/manhattan-plot.png){fig-alt="Manhattan plot showing -log10 p-values across chromosomes with peaks indicating significant associations"}
+![Manhattan plot example](../../images/manhattan-plot.png){fig-alt="Manhattan plot showing -log10 p-values across chromosomes with peaks indicating significant associations" width="70%"}
 
 ### Reading the Plot
 
@@ -63,7 +63,7 @@ Imagine:
 
 If you run GWAS for flower color, SNP_123 will look significant — but it's not actually causing the color difference. It's just **correlated with population structure**.
 
-![Confounding diagram](../../images/gwas-confounding.png){fig-alt="Diagram showing how population structure can confound GWAS results"}
+![Confounding diagram](../../images/gwas-confounding.png){fig-alt="Diagram showing how population structure can confound GWAS results" width="80%"}
 
 ### The Solution
 
@@ -82,7 +82,7 @@ BIGapp handles this automatically — the GWAS tab calculates principal componen
 
 ### Demo: Running GWAS
 
-![Running GWAS in BIGapp](../../images/bigapp-gwas.gif){fig-alt="Animated GIF showing the GWAS workflow in BIGapp"}
+![Running GWAS in BIGapp](../../images/bigapp-gwas.gif){fig-alt="Animated GIF showing the GWAS workflow in BIGapp" width="100%"}
 
 **Steps:**
 
@@ -175,7 +175,7 @@ Multiple significant SNPs in the same region usually represent **ONE QTL**, not 
 
 The **QQ (quantile-quantile) plot** helps you check if your GWAS is well-calibrated:
 
-![QQ plot example](../../images/qq-plot.png){fig-alt="QQ plot showing observed vs expected p-values with most points on diagonal and deviation at the tail"}
+![QQ plot example](../../images/qq-plot.png){fig-alt="QQ plot showing observed vs expected p-values with most points on diagonal and deviation at the tail" width="70%"}
 
 ### Reading the QQ Plot
 
